@@ -3,13 +3,15 @@ list:
     @just --list
 
 # Validate the plugin manifest and components with Claude Code.
-validate:
+validate-claude:
     claude plugin validate .
 
 # Load this plugin in a Claude Code session.
-launch:
+launch-claude:
     claude --plugin-dir .
 
 # Split the LangChain recap into numbered Markdown slides.
-split-slides:
-    python3 scripts/split_slides.py data/langchain-recap-5mn.md
+# For instance data/langchain-recap-5mn.md
+# @see https://just.systems/man/en/recipe-parameters.html
+split-slides slidev_file:
+    python3 scripts/split_slides.py {{slidev_file}}
