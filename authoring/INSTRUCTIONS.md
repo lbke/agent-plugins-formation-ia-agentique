@@ -4,7 +4,11 @@ Ce document est destiné aux agents IA qui font évoluer ce dépôt à partir de
 
 Il ne constitue pas un skill Claude et ne doit pas être placé sous `skills/` !
 
-Documentation pour la création de plugins : https://claude.com/docs/build/overview
+Documentation Claude pour la création de plugins : https://claude.com/docs/build/overview
+
+Documentation ChatGPT pour la création de plugins : https://developers.openai.com/plugins
+
+ChatGPT respecte le standard "Agent Plugins" : https://agent-plugins.org/
 
 ## Transformer des supports de formation en skills
 

@@ -6,7 +6,17 @@ Les skills couvrent l'initialisation d'un projet LangGraph, la configuration de 
 
 ## Utilisation
 
+### Claude Code
+
 Chargez le plugin dans Claude Code avec `claude --plugin-dir .`. Demandez ensuite à Claude d'expliquer un concept d'IA agentique, de vous aider à concevoir un workflow, de démarrer un projet LangGraph ou de vous proposer un exercice adapté à votre niveau.
+
+### ChatGPT
+
+Le dépôt contient un manifeste portable Agent Plugins (`plugin.json`) et une marketplace locale dans `.agents/plugins/marketplace.json`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation IA agentique**.
+
+Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de connecteur. La marketplace locale permet de le tester ou de le distribuer dans un dépôt ; elle ne publie pas le plugin dans le répertoire public de ChatGPT.
+
+Le manifeste Claude (`.claude-plugin/plugin.json`) et les fichiers de skills `SKILL.md` existants sont conservés. Le manifeste Agent Plugins ajoute le format attendu par ChatGPT sans remplacer la configuration Claude.
 
 ## Données
 

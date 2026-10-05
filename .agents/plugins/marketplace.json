@@ -1,0 +1,20 @@
+{
+  "name": "lbke-formations",
+  "interface": {
+    "displayName": "Formations LBKE"
+  },
+  "plugins": [
+    {
+      "name": "formation-ia-agentique",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education"
+    }
+  ]
+}
