@@ -1,6 +1,10 @@
 # Consignes de création et de maintenance du plugin
 
-Ce document est destiné aux personnes qui font évoluer ce dépôt. Il ne constitue pas un skill Claude et ne doit pas être placé sous `skills/`.
+Ce document est destiné aux agents IA qui font évoluer ce dépôt à partir des ressources de formations de LBKE. 
+
+Il ne constitue pas un skill Claude et ne doit pas être placé sous `skills/` !
+
+Documentation pour la création de plugins : https://claude.com/docs/build/overview
 
 ## Transformer des supports de formation en skills
 
@@ -21,3 +25,4 @@ Ajouter un petit script seulement lorsqu'il automatise une vérification directe
 - Les consignes de contribution et les documents internes résident hors de `skills/`, par exemple dans `authoring/`.
 - Mettre à jour le README lorsqu'on ajoute ou retire des skills ou des commandes utilisateur.
 - Valider les chemins, le frontmatter et les scripts concernés après chaque changement.
+

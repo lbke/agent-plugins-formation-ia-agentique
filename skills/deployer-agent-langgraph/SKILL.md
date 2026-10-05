@@ -3,7 +3,7 @@ name: deployer-agent-langgraph
 description: Guider la publication d'un projet LangGraph sur GitHub puis son exécution sur un hébergeur, notamment Render, ou aider à choisir entre développement local, conteneur et service géré. Utiliser pour préparer, configurer ou dépanner un déploiement.
 ---
 
-# Déployer un agent LangGraph
+# Déployer un agent LangChain ou LangGraph
 
 Clarifie d'abord la cible (démonstration, examen, test ou production), le niveau de confidentialité du dépôt, le fournisseur d'hébergement et la disponibilité d'une licence LangGraph Deployment si nécessaire. Les offres gratuites, tarifs, étapes d'interface et conditions des services évoluent : vérifie leur documentation actuelle. Ne qualifie pas `langgraph dev` de serveur de production.
 

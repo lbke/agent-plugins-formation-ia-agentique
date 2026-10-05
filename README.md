@@ -1,6 +1,6 @@
 # Formation IA agentique LBKE
 
-`formation-ia-agentique-lbke` est un plugin Claude conçu pour apprendre les bases et la pratique de l'IA agentique. Ses compétences accompagnent l'utilisateur avec des explications progressives, des exemples concrets et des exercices, tout en mettant l'accent sur les limites des agents et la validation humaine.
+`formation-ia-agentique` est un plugin Claude conçu pour apprendre les bases et la pratique de l'IA agentique. Ses compétences accompagnent l'utilisateur avec des explications progressives, des exemples concrets et des exercices, tout en mettant l'accent sur les limites des agents et la validation humaine.
 
 Les skills couvrent l'initialisation d'un projet LangGraph, la configuration de clés API, la création d'un agent LangChain simple, la conception d'un graphe LangGraph et le déploiement d'un agent. Les consignes de création et de maintenance du plugin sont conservées dans `authoring/`, séparément des skills distribuées.
 

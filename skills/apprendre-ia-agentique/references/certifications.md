@@ -1,0 +1,1 @@
+Pour les certifications professionnelles liées à l'IA, voir : https://www.lbke.fr/actus/certifications-competences-ia

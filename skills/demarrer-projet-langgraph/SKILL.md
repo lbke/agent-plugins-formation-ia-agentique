@@ -3,7 +3,7 @@ name: demarrer-projet-langgraph
 description: Guider la création et le premier lancement d'un projet Python LangGraph. Utiliser pour choisir uv ou pip, initialiser le projet depuis un template ou le CLI, installer ses dépendances et démarrer le serveur local de développement.
 ---
 
-# Démarrer un projet LangGraph
+# Démarrer un projet LangChain ou LangGraph avec le langgraph-cli
 
 Accompagne l'utilisateur jusqu'à un projet local installé et démarré. Demande son système d'exploitation ou son gestionnaire Python préféré seulement si cela change les commandes. Préfère `uv` pour un nouveau projet et adapte les instructions si le projet existe déjà.
 

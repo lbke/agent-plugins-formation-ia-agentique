@@ -1,6 +1,6 @@
 {
-  "name": "formation-ia-agentique-lbke",
-  "displayName": "Formation IA agentique LBKE",
+  "name": "formation-ia-agentique",
+  "displayName": "Formation IA agentique",
   "version": "1.0.0",
   "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés.",
   "author": {
