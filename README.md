@@ -8,15 +8,15 @@ Les skills couvrent l'initialisation d'un projet LangGraph, la configuration de 
 
 ### Claude Code
 
-Chargez le plugin dans Claude Code avec `claude --plugin-dir .`. Demandez ensuite à Claude d'expliquer un concept d'IA agentique, de vous aider à concevoir un workflow, de démarrer un projet LangGraph ou de vous proposer un exercice adapté à votre niveau.
+Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugin/marketplace.json`. Ajoutez-la et installez le plugin avec `claude plugin marketplace add .`, puis `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-ia-agentique`). Demandez ensuite à Claude d'expliquer un concept d'IA agentique, de vous aider à concevoir un workflow, de démarrer un projet LangGraph ou de vous proposer un exercice adapté à votre niveau.
 
 ### ChatGPT
 
-Le dépôt contient un manifeste portable Agent Plugins (`plugin.json`) et une marketplace locale dans `.agents/plugins/marketplace.json`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation IA agentique**.
+Le plugin `plugins/formation-ia-agentique/` contient les manifestes Claude et Agent Plugins ainsi que ses skills. La marketplace locale Agent Plugins est définie dans `.agents/plugins/marketplace.json`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation IA agentique**.
 
 Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de connecteur. La marketplace locale permet de le tester ou de le distribuer dans un dépôt ; elle ne publie pas le plugin dans le répertoire public de ChatGPT.
 
-Le manifeste Claude (`.claude-plugin/plugin.json`) et les fichiers de skills `SKILL.md` existants sont conservés. Le manifeste Agent Plugins ajoute le format attendu par ChatGPT sans remplacer la configuration Claude.
+Les deux marketplaces référencent le plugin sous `plugins/`, ce qui permet d'en ajouter d'autres sans modifier leur structure.
 
 ## Données
 
@@ -24,4 +24,4 @@ Le plugin ne contient aucun connecteur, n'envoie aucune donnée à un service ex
 
 ## Commandes
 
-Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate` pour vérifier le plugin, `just launch` pour le charger dans Claude Code ou `just split-slides` pour extraire les diapositives numérotées de `data/langchain-recap-5mn.md`.
+Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin dans Claude Code ou `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées.

@@ -8,7 +8,7 @@ validate-claude:
 
 # Load this plugin in a Claude Code session.
 launch-claude:
-    claude --plugin-dir .
+    claude --plugin-dir plugins/formation-ia-agentique
 
 # Split the LangChain recap into numbered Markdown slides.
 # For instance data/langchain-recap-5mn.md

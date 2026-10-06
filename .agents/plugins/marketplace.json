@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "formation-ia-agentique",
+      "name": "fr.lbke.formation-ia-agentique",
       "source": {
         "source": "local",
-        "path": "./"
+        "path": "./plugins/formation-ia-agentique"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -32,8 +32,7 @@ Ajouter un petit script seulement lorsqu'il automatise une vérification directe
 
 ## Organisation et validation
 
-- Les compétences livrées aux utilisateurs résident sous `skills/<nom-du-skill>/`.
-- Les consignes de contribution et les documents internes résident hors de `skills/`, par exemple dans `authoring/`.
+- Les compétences livrées aux utilisateurs résident sous `plugins/<nom-du-plugin>/skills/<nom-du-skill>/`.
+- Les consignes de contribution et les documents internes résident hors des dossiers de plugins, par exemple dans `authoring/`.
 - Mettre à jour le README lorsqu'on ajoute ou retire des skills ou des commandes utilisateur.
 - Valider les chemins, le frontmatter et les scripts concernés après chaque changement.
-

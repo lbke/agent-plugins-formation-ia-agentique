@@ -1,0 +1,14 @@
+{
+  "name": "lbke-formations",
+  "description": "Plugins de formation proposés par LBKE.",
+  "owner": {
+    "name": "LBKE"
+  },
+  "plugins": [
+    {
+      "name": "fr.lbke.formation-ia-agentique",
+      "source": "./plugins/formation-ia-agentique",
+      "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés."
+    }
+  ]
+}
