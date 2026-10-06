@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "fr.lbke.formation-ia-agentique",
+      "name": "formation-ia-agentique",
       "source": "./plugins/formation-ia-agentique",
       "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés."
     }

@@ -10,5 +10,22 @@
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
   "license": "MIT",
-  "keywords": ["formation", "IA agentique", "LangChain", "LangGraph"]
+  "keywords": ["formation", "IA agentique", "LangChain", "LangGraph"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Formation IA agentique",
+        "shortDescription": "Apprenez à concevoir des systèmes d’IA agentique.",
+        "longDescription": "Une formation guidée pour apprendre à concevoir, utiliser et évaluer des systèmes d’IA agentique avec des explications progressives, des exemples concrets et des exercices.",
+        "developerName": "LBKE",
+        "category": "Education",
+        "websiteURL": "https://www.lbke.fr/formations/",
+        "defaultPrompt": [
+          "Explique-moi les bases de l’IA agentique.",
+          "Aide-moi à concevoir un workflow LangGraph.",
+          "Propose-moi un exercice adapté à mon niveau."
+        ]
+      }
+    }
+  }
 }

@@ -8,6 +8,8 @@ Il ne constitue pas un skill Claude et ne doit pas être placé sous `skills/` !
 
 Documentation Claude pour la création de plugins : https://claude.com/docs/build/overview
 
+Claude veut le nom du plugin en "kebab-case", sans source
+
 ## Pour ChatGPT
 
 Documentation ChatGPT pour la création de plugins : https://developers.openai.com/plugins
@@ -16,6 +18,12 @@ ChatGPT respecte le standard "Agent Plugins" : https://agent-plugins.org/
 
 Pour soumettre: 
 https://developers.openai.com/plugins/deploy/submission
+
+Champs spécifiques du schéma agent plugins (./plugin.json à la racine de chaque plugin, pas celui de Claude Code par contre) pour les Client Extensions : 
+https://agent-plugins.org/plugin-authors/client-extensions
+https://github.com/openai/plugins/blob/main/.agents/skills/plugin-creator/references/plugin-json-spec.md
+
+
 
 ## Transformer des supports de formation en skills
 
@@ -36,3 +44,4 @@ Ajouter un petit script seulement lorsqu'il automatise une vérification directe
 - Les consignes de contribution et les documents internes résident hors des dossiers de plugins, par exemple dans `authoring/`.
 - Mettre à jour le README lorsqu'on ajoute ou retire des skills ou des commandes utilisateur.
 - Valider les chemins, le frontmatter et les scripts concernés après chaque changement.
+
