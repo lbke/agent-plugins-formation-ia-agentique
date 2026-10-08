@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fr.lbke.formation-ia-agentique",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés.",
   "author": {
     "name": "LBKE",
