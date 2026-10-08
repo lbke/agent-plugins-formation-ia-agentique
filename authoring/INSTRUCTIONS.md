@@ -10,6 +10,8 @@ Documentation Claude pour la création de plugins : https://claude.com/docs/buil
 
 Claude veut le nom du plugin en "kebab-case", sans source
 
+Structure du fichier plugin.json: https://code.claude.com/docs/en/plugins/manifest-reference
+
 ## Pour ChatGPT
 
 Documentation ChatGPT pour la création de plugins : https://developers.openai.com/plugins

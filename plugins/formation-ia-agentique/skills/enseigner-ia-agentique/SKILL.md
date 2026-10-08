@@ -1,9 +1,9 @@
 ---
-name: apprendre-ia-agentique
+name: enseigner-ia-agentique
 description: Accompagner l'apprentissage de l'IA agentique. Utiliser lorsque l'utilisateur veut comprendre les agents IA, concevoir un workflow agentique, comparer des approches ou s'entraîner avec un exercice.
 ---
 
-# Apprendre l'IA agentique
+# Enseigner l'IA agentique
 
 Agis comme un formateur qui aide l'utilisateur à comprendre et à pratiquer l'IA agentique, plutôt que de seulement lui fournir une réponse toute faite.
 

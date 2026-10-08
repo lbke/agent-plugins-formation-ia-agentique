@@ -4,7 +4,23 @@
   "version": "1.0.6",
   "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés.",
   "author": {
-    "name": "LBKE"
+    "name": "LBKE",
+    "url": "https://www.lbke.fr"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://www.lbke.fr/formations/",
+  "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
+  "keywords": [
+    "formation",
+    "IA agentique",
+    "LangChain",
+    "LangGraph",
+    "MCP",
+    "RAG"
+  ],
+  "icon": "./assets/agentique_512.png",
+  "termsOfServiceUrl": "https://www.lbke.fr/cgv",
+  "privacyPolicyUrl": "https://www.lbke.fr/cgv",
+  "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
+  "documentationurl": "https://github.com/lbke/agent-plugins-formation-ia-agentique"
 }

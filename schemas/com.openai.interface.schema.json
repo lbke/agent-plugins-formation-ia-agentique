@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/com.openai.interface.schema.json",
+  "title": "OpenAI plugin interface",
+  "description": "Validation schema for the com.openai.extension interface payload used by Agent plugin manifests.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "displayName",
+    "shortDescription",
+    "longDescription",
+    "developerName",
+    "category"
+  ],
+  "properties": {
+    "displayName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Public listing name. Final directory submission limits it to 30 characters."
+    },
+    "shortDescription": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "description": "One-line summary shown in listings. Final submission caps it at 30 characters."
+    },
+    "longDescription": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "description": "Detailed listing description. Line breaks are allowed."
+    },
+    "developerName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "Name of the developer or company displayed in the listing."
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Productivity",
+        "Creativity",
+        "Developer Tools",
+        "Business & Operations",
+        "Data & Analytics",
+        "Communication",
+        "Education & Research",
+        "Security",
+        "Finance",
+        "Healthcare",
+        "Travel",
+        "Entertainment",
+        "Other"
+      ],
+      "description": "Supported OpenAI plugin category."
+    },
+    "websiteURL": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.*$",
+      "description": "HTTPS website URL for the plugin listing."
+    },
+    "privacyPolicyURL": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.*$",
+      "description": "HTTPS privacy policy URL."
+    },
+    "termsOfServiceURL": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.*$",
+      "description": "HTTPS terms of service URL."
+    },
+    "supportURL": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.*$",
+      "description": "HTTPS support URL."
+    },
+    "defaultPrompt": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "minItems": 1,
+          "maxItems": 3
+        }
+      ],
+      "description": "Starter prompt(s) shown to users. Up to three prompts are allowed."
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      },
+      "maxItems": 20,
+      "description": "Listing capabilities for the plugin."
+    },
+    "logo": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path to the plugin logo asset. Must point to a square image file."
+    },
+    "composerIcon": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path to the composer icon asset. Must point to a square image file."
+    },
+    "brandColor": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Primary branding color as a six-digit hex string."
+    },
+    "brandColorDark": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Dark-mode branding color as a six-digit hex string."
+    },
+    "screenshots": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Custom UI screenshots; allowed only when the plugin exposes custom UI. Each screenshot must be exactly 706 pixels wide and 400–860 pixels tall. PNG or JPG."
+    }
+  }
+}

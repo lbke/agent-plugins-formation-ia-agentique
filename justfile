@@ -19,10 +19,19 @@ zip-plugin plugin_name='formation-ia-agentique':
 # Examples: just bump-version patch / just bump-version bump=patch
 bump-version bump='patch':
     # Bump version in manifests, commit all changes and create a tag.
-    new_version := `python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}"`
+    new_version=$$(python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}")
     git add -A
-    git commit -am "Bump version to {{new_version}}"
-    git tag -a v{{new_version}} -m "Release v{{new_version}}"
+    git commit -am "Bump version to $$new_version"
+    git tag -a v$$new_version -m "Release v$$new_version"
+
+# Synchronize the Claude manifest from the Agent Plugin manifest.
+# The root plugin.json stays authoritative; the Claude `name` remains separate.
+sync-claude-plugin plugin_name='formation-ia-agentique':
+    python3 scripts/sync_claude_plugin.py --plugin-path "plugins/{{plugin_name}}"
+
+# Validate the com.openai interface metadata against its JSON schema file.
+validate-openai-interface plugin_name='formation-ia-agentique':
+    python3 scripts/validate_com_openai_interface.py --plugin-path "plugins/{{plugin_name}}"
 
 # Split the LangChain recap into numbered Markdown slides.
 # For instance data/langchain-recap-5mn.md
