@@ -15,6 +15,11 @@ launch-claude:
 zip-plugin plugin_name='formation-ia-agentique':
     python3 scripts/package_plugin.py --plugin-path "plugins/{{plugin_name}}" --output "dist/{{plugin_name}}.zip"
 
+# Bump the plugin version in both manifests and create the matching Git tag.
+# Example: just bump-version patch
+bump-version part='patch':
+    python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part {{part}}
+
 # Split the LangChain recap into numbered Markdown slides.
 # For instance data/langchain-recap-5mn.md
 # @see https://just.systems/man/en/recipe-parameters.html

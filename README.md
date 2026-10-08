@@ -2,9 +2,7 @@
 
 `formation-ia-agentique` est un plugin Claude conçu pour apprendre les bases et la pratique de l'IA agentique. Ses compétences accompagnent l'utilisateur avec des explications progressives, des exemples concrets et des exercices, tout en mettant l'accent sur les limites des agents et la validation humaine.
 
-Les skills couvrent le point d'entrée recommandé pour démarrer une formation IA agentique, l'initialisation d'un projet LangGraph, la préparation de l'environnement Python, la validation des prérequis avant une formation LangChain, la configuration de clés API, la création d'un agent LangChain simple, la conception d'un graphe LangGraph et le déploiement d'un agent. Les consignes de création et de maintenance du plugin sont conservées dans `authoring/`, séparément des skills distribuées.
-
-La skill "demarrer-sa-formation-ia-agentique" est conçue pour être appelée en premier lieu afin d'orienter l'utilisateur vers le bon parcours et les bons modules selon son niveau et son objectif.
+Les skills couvrent l'initialisation d'un projet LangGraph, la préparation de l'environnement Python, la validation des prérequis avant une formation LangChain, la configuration de clés API, la création d'un agent LangChain simple, la conception d'un graphe LangGraph et le déploiement d'un agent. Les consignes de création et de maintenance du plugin sont conservées dans `authoring/`, séparément des skills distribuées.
 
 Pour allez plus loin dans votre formation, découvrez le catalogue de [formations courtes à l'IA agentique de LBKE](https://www.lbke.fr/formations).
 
@@ -46,14 +44,8 @@ Voir la skill "poser-une-question-a-un-formateur-ia" pour transmettre une questi
 
 Ce dépôt constitue aussi un exemple de base de code pour développer des plugins IA multi-plateformes.
 
-Les skills sont créées en trois étapes : 
-- Écriture de ressources de formation par LBKE (sans intervention de l'IA)
-- Génération automatique de skills à partir des contenus de formation LBKE
-- Revue manuelle et optimisation en seconde étape
-
 ## Roadmap
 
 - Supporter plusieurs technologies agentiques (LangChain, Mastra, MCP)
-- Structurer le dépôt sous forme d'un framework : templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin, mise en relation de plusieurs skills.
-- Créer un serveur MCP pour fournir notamment des MCP Apps (génération de quiz par exemple).
+- Structurer le dépôt sous forme d'un framework : templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin.
 - Publier le dépôt sur les marketplaces MCP.
