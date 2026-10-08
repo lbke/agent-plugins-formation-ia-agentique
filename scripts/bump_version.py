@@ -3,6 +3,7 @@
 import argparse
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -34,6 +35,7 @@ def update_version(path: Path, new_version: str) -> None:
 
 
 def main() -> None:
+    argv = sys.argv[1:]
     parser = argparse.ArgumentParser(
         description="Bump the plugin version and create a matching git tag.")
     parser.add_argument("--plugin-path", type=Path, default=Path(
@@ -42,7 +44,7 @@ def main() -> None:
         "--part", choices=["major", "minor", "patch"], default="patch", help="Version bump type.")
     parser.add_argument("--dry-run", action="store_true",
                         help="Preview the updated version and tag without modifying files or Git tags.")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     plugin_dir = args.plugin_path.resolve()
     metadata_path = plugin_dir / "plugin.json"
