@@ -1,6 +1,6 @@
 ---
-name: ameliorer-ce-plugin
-description: Aider l'utilisateur à formuler une amélioration ou un correctif du plugin et à proposer un ticket GitHub utile.
+name: poser-une-question-a-un-formateur-ia
+description: Transmettre une question ou suggestion d'amélioration de l'utilisateur aux formateurs IA agentique de LBKE, via un ticket GitHub.
 ---
 
 # Améliorer ce plugin

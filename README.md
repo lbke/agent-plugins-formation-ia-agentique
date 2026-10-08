@@ -2,15 +2,27 @@
 
 `formation-ia-agentique` est un plugin Claude conçu pour apprendre les bases et la pratique de l'IA agentique. Ses compétences accompagnent l'utilisateur avec des explications progressives, des exemples concrets et des exercices, tout en mettant l'accent sur les limites des agents et la validation humaine.
 
-Les skills couvrent l'initialisation d'un projet LangGraph, la configuration de clés API, la création d'un agent LangChain simple, la conception d'un graphe LangGraph et le déploiement d'un agent. Les consignes de création et de maintenance du plugin sont conservées dans `authoring/`, séparément des skills distribuées.
+Les skills couvrent le point d'entrée recommandé pour démarrer une formation IA agentique, l'initialisation d'un projet LangGraph, la préparation de l'environnement Python, la validation des prérequis avant une formation LangChain, la configuration de clés API, la création d'un agent LangChain simple, la conception d'un graphe LangGraph et le déploiement d'un agent. Les consignes de création et de maintenance du plugin sont conservées dans `authoring/`, séparément des skills distribuées.
 
-## Utilisation
+La skill "demarrer-sa-formation-ia-agentique" est conçue pour être appelée en premier lieu afin d'orienter l'utilisateur vers le bon parcours et les bons modules selon son niveau et son objectif.
 
-### Claude Code
+Pour allez plus loin dans votre formation, découvrez le catalogue de [formations courtes à l'IA agentique de LBKE](https://www.lbke.fr/formations).
 
-Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugin/marketplace.json`. Ajoutez-la et installez le plugin avec `claude plugin marketplace add .`, puis `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-ia-agentique`). Demandez ensuite à Claude d'expliquer un concept d'IA agentique, de vous aider à concevoir un workflow, de démarrer un projet LangGraph ou de vous proposer un exercice adapté à votre niveau.
+## Installation du plugin
 
-### ChatGPT
+### Via le fichier zip
+
+Téléchargez la version zippée du plugin.
+
+### Via les sources - Claude Code
+
+Clonez le dépôt.
+
+Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugin/marketplace.json`. Ajoutez-la avec `claude plugin marketplace add .`
+
+Puis installez le plugin avec `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-ia-agentique`). Demandez ensuite à Claude d'expliquer un concept d'IA agentique, de vous aider à concevoir un workflow, de démarrer un projet LangGraph ou de vous proposer un exercice adapté à votre niveau.
+
+### Via les sources - ChatGPT, VS Code (Agent Plugins)
 
 Le plugin `plugins/formation-ia-agentique/` contient les manifestes Claude et Agent Plugins ainsi que ses skills. La marketplace locale Agent Plugins est définie dans `.agents/plugins/marketplace.json`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation IA agentique**.
 
@@ -24,4 +36,24 @@ Le plugin ne contient aucun connecteur, n'envoie aucune donnée à un service ex
 
 ## Commandes
 
-Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin dans Claude Code ou `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées.
+Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin dans Claude Code, `just zip-plugin formation-ia-agentique` pour générer une archive ZIP installable ou `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées.
+
+## Contributions
+
+Dépôt GitHub : https://github.com/lbke/claude-plugin-formation-ia-agentique.git
+
+Voir la skill "poser-une-question-a-un-formateur-ia" pour transmettre une question ou suggestion d'amélioration aux formateurs IA agentique de LBKE, via un ticket GitHub.
+
+Ce dépôt constitue aussi un exemple de base de code pour développer des plugins IA multi-plateformes.
+
+Les skills sont créées en trois étapes : 
+- Écriture de ressources de formation par LBKE (sans intervention de l'IA)
+- Génération automatique de skills à partir des contenus de formation LBKE
+- Revue manuelle et optimisation en seconde étape
+
+## Roadmap
+
+- Supporter plusieurs technologies agentiques (LangChain, Mastra, MCP)
+- Structurer le dépôt sous forme d'un framework : templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin, mise en relation de plusieurs skills.
+- Créer un serveur MCP pour fournir notamment des MCP Apps (génération de quiz par exemple).
+- Publier le dépôt sur les marketplaces MCP.

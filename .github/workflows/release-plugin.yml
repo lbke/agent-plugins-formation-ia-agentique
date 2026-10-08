@@ -1,0 +1,28 @@
+name: Release plugin zip
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Create plugin archive
+        run: |
+          python3 scripts/package_plugin.py \
+            --plugin-path plugins/formation-ia-agentique \
+            --output dist/formation-ia-agentique.zip
+
+      - name: Publish GitHub release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/formation-ia-agentique.zip

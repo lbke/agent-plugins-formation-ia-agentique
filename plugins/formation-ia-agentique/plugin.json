@@ -21,6 +21,7 @@
         "category": "Education",
         "websiteURL": "https://www.lbke.fr/formations/",
         "defaultPrompt": [
+          "Démarre ma formation IA agentique et aide-moi à choisir le bon chemin.",
           "Explique-moi les bases de l’IA agentique.",
           "Aide-moi à concevoir un workflow LangGraph.",
           "Propose-moi un exercice adapté à mon niveau."
