@@ -61,19 +61,15 @@ def main() -> None:
     if args.dry_run:
         print(f"Current version: {current_version}")
         print(f"Next version:    {new_version}")
-        print(f"Git tag:         {tag_name}")
+        print(f"Suggested Git tag: {tag_name}")
         return
 
     update_version(metadata_path, new_version)
     if claude_path.exists():
         update_version(claude_path, new_version)
 
-    subprocess.run(["git", "tag", "-a", tag_name, "-m",
-                   f"Release {tag_name}"], check=True)
-
-    print(f"Version bumped from {current_version} to {new_version}")
-    print(f"Created Git tag: {tag_name}")
-    print("Push it with: git push origin --tags")
+    # Output the new version so callers (Makefile/justfile) can act on it.
+    print(new_version)
 
 
 if __name__ == "__main__":

@@ -18,7 +18,11 @@ zip-plugin plugin_name='formation-ia-agentique':
 # Bump the plugin version in both manifests and create the matching Git tag.
 # Examples: just bump-version patch / just bump-version bump=patch
 bump-version bump='patch':
-    python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}"
+    # Bump version in manifests, commit all changes and create a tag.
+    new_version := `python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}"`
+    git add -A
+    git commit -am "Bump version to {{new_version}}"
+    git tag -a v{{new_version}} -m "Release v{{new_version}}"
 
 # Split the LangChain recap into numbered Markdown slides.
 # For instance data/langchain-recap-5mn.md
