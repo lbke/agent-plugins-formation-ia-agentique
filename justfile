@@ -19,7 +19,7 @@ zip-plugin plugin_name='formation-ia-agentique':
 # Examples: just bump-version patch / just bump-version bump=patch
 bump-version bump='patch':
     # Bump version in manifests, commit all changes and create a tag.
-    new_version=$(python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}" ); git add -A ; git commit -am "Bump version to $new_version" ; git tag -a "v$new_version" -m "Release v$new_version"
+    new_version=$(python3 scripts/bump_version.py --plugin-path "plugins/formation-ia-agentique" --part "{{bump}}" ); git add -A ; git commit -am "Bump version to $new_version" ; git tag -a "v$new_version" -m "Release v$new_version"; git push --tags;
 
 # Synchronize the Claude manifest from the Agent Plugin manifest.
 # The root plugin.json stays authoritative; the Claude `name` remains separate.
