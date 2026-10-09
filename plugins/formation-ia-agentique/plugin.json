@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fr.lbke.formation-ia-agentique",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés.",
   "author": {
     "name": "LBKE",
@@ -40,7 +40,11 @@
       },
       "onboardingSkill": "./skills/demarrer-sa-formation-ia-agentique/SKILL.md",
       "publication": {
-        "countries": ["FR", "BE", "CH"],
+        "countries": [
+          "FR",
+          "BE",
+          "CH"
+        ],
         "release_notes": "Version bêta - support du framework LangChain"
       }
     }
