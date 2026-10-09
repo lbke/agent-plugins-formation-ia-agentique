@@ -37,6 +37,11 @@
         "logo": "./assets/agentique_512.png",
         "brandColor": "#222d8f",
         "brandColorDark": "#ffffff"
+      },
+      "onboardingSkill": "./skills/demarrer-sa-formation-ia-agentique/SKILL.md",
+      "publication": {
+        "countries": ["FR", "BE", "CH"],
+        "release_notes": "Version bêta - support du framework LangChain"
       }
     }
   }

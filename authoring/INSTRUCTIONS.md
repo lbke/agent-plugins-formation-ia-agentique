@@ -22,8 +22,14 @@ Pour soumettre:
 https://developers.openai.com/plugins/deploy/submission
 
 Champs spécifiques du schéma agent plugins (./plugin.json à la racine de chaque plugin, pas celui de Claude Code par contre) pour les Client Extensions : 
-https://agent-plugins.org/plugin-authors/client-extensions
-https://github.com/openai/plugins/blob/main/.agents/skills/plugin-creator/references/plugin-json-spec.md
+
+- Champs génériques : https://agent-plugins.org/plugin-authors/client-extensions
+
+- Échantillon du schéma OpenAI : https://github.com/openai/plugins/blob/main/.agents/skills/plugin-creator/references/plugin-json-spec.md
+
+- Schéma complet OpenAI : https://developers.openai.com/plugins/deploy/submission#agent-plugins-format
+
+- Règles de validation : https://developers.openai.com/plugins/deploy/submission-errors
 
 
 

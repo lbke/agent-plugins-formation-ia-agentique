@@ -1,142 +1,386 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/schemas/com.openai.interface.schema.json",
-  "title": "OpenAI plugin interface",
-  "description": "Validation schema for the com.openai.extension interface payload used by Agent plugin manifests.",
+  "title": "OpenAI Agent Plugins manifest",
+  "description": "Validation schema for OpenAI Agent Plugins metadata, including package identity and the com.openai extension fields used for submission.",
   "type": "object",
   "additionalProperties": false,
-  "required": [
-    "displayName",
-    "shortDescription",
-    "longDescription",
-    "developerName",
-    "category"
-  ],
   "properties": {
-    "displayName": {
+    "$schema": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://agent-plugins.org/schemas/1.0.0/plugin.schema.json$"
+    },
+    "name": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 80,
-      "description": "Public listing name. Final directory submission limits it to 30 characters."
+      "maxLength": 64,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Stable package identifier."
     },
-    "shortDescription": {
+    "version": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 240,
-      "description": "One-line summary shown in listings. Final submission caps it at 30 characters."
+      "maxLength": 64,
+      "description": "Package release version."
     },
-    "longDescription": {
+    "description": {
       "type": "string",
       "minLength": 1,
       "maxLength": 4000,
-      "description": "Detailed listing description. Line breaks are allowed."
+      "description": "Package description."
     },
-    "developerName": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 120,
-      "description": "Name of the developer or company displayed in the listing."
-    },
-    "category": {
-      "type": "string",
-      "enum": [
-        "Productivity",
-        "Creativity",
-        "Developer Tools",
-        "Business & Operations",
-        "Data & Analytics",
-        "Communication",
-        "Education & Research",
-        "Security",
-        "Finance",
-        "Healthcare",
-        "Travel",
-        "Entertainment",
-        "Other"
-      ],
-      "description": "Supported OpenAI plugin category."
-    },
-    "websiteURL": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://.*$",
-      "description": "HTTPS website URL for the plugin listing."
-    },
-    "privacyPolicyURL": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://.*$",
-      "description": "HTTPS privacy policy URL."
-    },
-    "termsOfServiceURL": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://.*$",
-      "description": "HTTPS terms of service URL."
-    },
-    "supportURL": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://.*$",
-      "description": "HTTPS support URL."
-    },
-    "defaultPrompt": {
-      "oneOf": [
-        {
+    "author": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
           "type": "string",
           "minLength": 1,
-          "maxLength": 512
+          "maxLength": 120
         },
-        {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 512
-          },
-          "minItems": 1,
-          "maxItems": 3
+        "email": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 320
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 2048
         }
-      ],
-      "description": "Starter prompt(s) shown to users. Up to three prompts are allowed."
+      },
+      "required": ["name"]
     },
-    "capabilities": {
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.*$",
+      "maxLength": 2048
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://.*$",
+      "maxLength": 2048
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "keywords": {
       "type": "array",
       "items": {
         "type": "string",
         "minLength": 1,
         "maxLength": 120
       },
-      "maxItems": 20,
-      "description": "Listing capabilities for the plugin."
+      "maxItems": 50
     },
-    "logo": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Relative path to the plugin logo asset. Must point to a square image file."
+    "extensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "com.openai": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            "interface": {
+              "$ref": "#/$defs/interface"
+            },
+            "onboardingSkill": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Relative path to a skill used for setup onboarding."
+            },
+            "review": {
+              "$ref": "#/$defs/review"
+            },
+            "publication": {
+              "$ref": "#/$defs/publication"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "displayName",
+        "shortDescription",
+        "longDescription",
+        "developerName",
+        "category"
+      ],
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30,
+          "description": "Public listing name shown to users."
+        },
+        "shortDescription": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30,
+          "description": "Subtitle shown with the plugin name."
+        },
+        "longDescription": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000,
+          "description": "Detailed plugin description."
+        },
+        "developerName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "description": "Publisher or company name."
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Productivity",
+            "Creativity",
+            "Developer Tools",
+            "Business & Operations",
+            "Data & Analytics",
+            "Communication",
+            "Education & Research",
+            "Security",
+            "Finance",
+            "Healthcare",
+            "Travel",
+            "Entertainment",
+            "Other"
+          ],
+          "description": "OpenAI-supported plugin category."
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "maxItems": 20,
+          "description": "Capability labels shown in the listing."
+        },
+        "websiteURL": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 1024,
+          "description": "HTTPS product website."
+        },
+        "supportURL": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 1024,
+          "description": "HTTPS support resource."
+        },
+        "privacyPolicyURL": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 1024,
+          "description": "HTTPS privacy policy."
+        },
+        "termsOfServiceURL": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 1024,
+          "description": "HTTPS terms of service page."
+        },
+        "defaultPrompt": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "minItems": 1,
+              "maxItems": 3
+            }
+          ],
+          "description": "Starter prompt(s); up to three prompts are allowed."
+        },
+        "brandColor": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Primary light-theme brand color."
+        },
+        "brandColorDark": {
+          "type": "string",
+          "pattern": "^#[0-9A-Fa-f]{6}$",
+          "description": "Dark-theme brand color."
+        },
+        "composerIcon": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path to the composer icon asset."
+        },
+        "composerIconDark": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path to the dark composer icon asset."
+        },
+        "logo": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path to the primary listing logo."
+        },
+        "logoDark": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path to the dark listing logo asset."
+        },
+        "screenshots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Relative paths to screenshot assets."
+        }
+      }
     },
-    "composerIcon": {
-      "type": "string",
-      "minLength": 1,
-      "description": "Relative path to the composer icon asset. Must point to a square image file."
+    "reviewTestCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "prompt"],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "prompt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "tools_triggered": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "expected_behavior": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "file_attachment_urls": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://.*$"
+          },
+          "maxItems": 10
+        },
+        "expected_output_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$"
+        }
+      }
     },
-    "brandColor": {
-      "type": "string",
-      "pattern": "^#[0-9A-Fa-f]{6}$",
-      "description": "Primary branding color as a six-digit hex string."
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "test_cases": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "positive": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/reviewTestCase"
+              },
+              "maxItems": 5
+            },
+            "negative": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/reviewTestCase"
+              },
+              "maxItems": 3
+            }
+          }
+        },
+        "demo_recording_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://.*$",
+          "maxLength": 2048
+        },
+        "commerce": {
+          "type": "boolean"
+        },
+        "commerce_description": {
+          "type": "string",
+          "maxLength": 4000
+        }
+      }
     },
-    "brandColorDark": {
-      "type": "string",
-      "pattern": "^#[0-9A-Fa-f]{6}$",
-      "description": "Dark-mode branding color as a six-digit hex string."
-    },
-    "screenshots": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "description": "Custom UI screenshots; allowed only when the plugin exposes custom UI. Each screenshot must be exactly 706 pixels wide and 400–860 pixels tall. PNG or JPG."
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "countries": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+          },
+          "description": "Allowlisted publishing countries in ISO 3166-1 alpha-2 format."
+        },
+        "release_notes": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "translations": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Za-z]{2,3}-[A-Za-z0-9]{2,}$": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "subtitle": {
+                  "type": ["string", "null"],
+                  "maxLength": 30
+                },
+                "description": {
+                  "type": ["string", "null"],
+                  "maxLength": 4000
+                }
+              }
+            }
+          },
+          "description": "Localized listing translations keyed by locale code."
+        }
+      }
     }
   }
 }

@@ -7,6 +7,15 @@ description: Point d'entrée recommandé pour commencer une formation IA agentiq
 
 Utilise ce skill en premier pour orienter l'utilisateur dans sa formation IA agentique. C'est le point d'entrée recommandé avant de commencer un projet, d'installer un environnement ou de choisir une ressource.
 
+## Ton et sources d'information
+
+Adopte un ton professionnel, bienveillant sans être infantilisant. Limite les sources que tu cites à des sources officielles :
+
+- Grandes entreprises de l'informatique et l'IA : IBM, AWS, OpenAI, Anthropic, Mistral
+- Acteurs institutionnels français et internationaux : Hub France IA, France Num, Agentic AI Foundation, syndicat Numeum, institutions économiques ou liées au monde de l'emploi...
+- Ressources produites par LBKE : https://www.lbke.fr/
+- Documentations officielles des technologies et frameworks pour l'agentique : LangChain, Mastra, standard MCP...
+
 ## Objectif
 
 - Identifier le niveau de départ et le besoin principal de l'utilisateur.
