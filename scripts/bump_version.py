@@ -2,9 +2,10 @@
 
 import argparse
 import json
-import subprocess
 import sys
 from pathlib import Path
+
+from builder import iter_plugin_dirs
 
 
 def bump_version(version: str, part: str) -> str:
@@ -37,24 +38,18 @@ def update_version(path: Path, new_version: str) -> None:
 def main() -> None:
     argv = sys.argv[1:]
     parser = argparse.ArgumentParser(
-        description="Bump the plugin version and create a matching git tag.")
-    parser.add_argument("--plugin-path", type=Path, default=Path(
-        "plugins/formation-ia-agentique"), help="Plugin directory to update.")
+        description="Bump the project-wide plugin version and create a matching git tag.")
+    parser.add_argument("--plugin-path", type=Path, default=Path("plugins"),
+                        help="Plugin directory or plugins root to update.")
     parser.add_argument(
         "--part", choices=["major", "minor", "patch"], default="patch", help="Version bump type.")
     parser.add_argument("--dry-run", action="store_true",
                         help="Preview the updated version and tag without modifying files or Git tags.")
     args = parser.parse_args(argv)
 
-    plugin_dir = args.plugin_path.resolve()
-    metadata_path = plugin_dir / "plugin.json"
-    claude_path = plugin_dir / ".claude-plugin" / "plugin.json"
-
-    if not metadata_path.exists():
-        raise FileNotFoundError(f"Plugin manifest not found: {metadata_path}")
-
+    plugin_dirs = iter_plugin_dirs(args.plugin_path)
     current_version = json.loads(
-        metadata_path.read_text(encoding="utf-8"))["version"]
+        (plugin_dirs[0] / "plugin.json").read_text(encoding="utf-8"))["version"]
     new_version = bump_version(current_version, args.part)
     tag_name = f"v{new_version}"
 
@@ -62,11 +57,15 @@ def main() -> None:
         print(f"Current version: {current_version}")
         print(f"Next version:    {new_version}")
         print(f"Suggested Git tag: {tag_name}")
+        print(f"Updated plugins: {', '.join(d.name for d in plugin_dirs)}")
         return
 
-    update_version(metadata_path, new_version)
-    if claude_path.exists():
-        update_version(claude_path, new_version)
+    for plugin_dir in plugin_dirs:
+        metadata_path = plugin_dir / "plugin.json"
+        claude_path = plugin_dir / ".claude-plugin" / "plugin.json"
+        update_version(metadata_path, new_version)
+        if claude_path.exists():
+            update_version(claude_path, new_version)
 
     # Output the new version so callers (Makefile/justfile) can act on it.
     print(new_version)

@@ -8,7 +8,12 @@
     {
       "name": "formation-ia-agentique",
       "source": "./plugins/formation-ia-agentique",
-      "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés."
+      "description": "Découvrir les concepts de l'IA agentique et construire un parcours d'apprentissage adapté à ses objectifs."
+    },
+    {
+      "name": "formation-langchain",
+      "source": "./plugins/formation-langchain",
+      "description": "Apprendre à concevoir des applications et des agents avec LangChain et LangGraph grâce à des explications progressives et des exercices guidés."
     }
   ]
 }

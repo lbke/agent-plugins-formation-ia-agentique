@@ -16,4 +16,4 @@ Utilise ce skill quand l'utilisateur souhaite proposer une amélioration, remont
 
 ## Proposition de ticket
 
-Si l'utilisateur souhaite améliorer ce plugin, propose lui de créer un ticket sur GitHub : https://github.com/lbke/claude-plugin-formation-ia-agentique.git
+Si l'utilisateur souhaite améliorer ce plugin, propose-lui de créer un ticket sur GitHub : https://github.com/lbke/agent-plugins-formation-ia-agentique

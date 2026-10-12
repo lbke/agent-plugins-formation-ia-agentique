@@ -6,6 +6,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from builder import iter_plugin_dirs
+
 
 CLAUDE_MANIFEST_KEYS = {
     "name",
@@ -23,6 +25,7 @@ CLAUDE_MANIFEST_KEYS = {
     "termsOfServiceUrl",
     "documentationUrl",
     "defaultEnabled",
+    "defaultPrompt",
     "dependencies",
     "settings",
     "userConfig",
@@ -162,75 +165,80 @@ def main() -> int:
     parser.add_argument(
         "--plugin-path",
         type=Path,
-        default=Path("plugins/formation-ia-agentique"),
-        help="Plugin directory to synchronize.",
+        default=Path("plugins"),
+        help="Plugin directory or plugins root to synchronize.",
     )
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Validate whether the Claude manifest matches the source and exit 1 if it would change.",
+        help="Validate whether the Claude manifests match the source and exit 1 if any would change.",
     )
     args = parser.parse_args()
 
-    plugin_dir = args.plugin_path.resolve()
-    agent_path = plugin_dir / "plugin.json"
-    claude_path = plugin_dir / ".claude-plugin" / "plugin.json"
+    plugin_dirs = iter_plugin_dirs(args.plugin_path)
+    failed = False
 
-    if not agent_path.exists():
-        raise FileNotFoundError(
-            f"Agent plugin manifest not found: {agent_path}")
+    for plugin_dir in plugin_dirs:
+        agent_path = plugin_dir / "plugin.json"
+        claude_path = plugin_dir / ".claude-plugin" / "plugin.json"
 
-    agent_data = load_json(agent_path)
-    expected_updates = build_sync_map(agent_data)
+        if not agent_path.exists():
+            raise FileNotFoundError(
+                f"Agent plugin manifest not found: {agent_path}")
 
-    if not claude_path.exists():
+        agent_data = load_json(agent_path)
+        expected_updates = build_sync_map(agent_data)
+
+        if not claude_path.exists():
+            if args.check:
+                print(f"Claude manifest is missing: {claude_path}")
+                failed = True
+                continue
+            claude_data: dict[str, Any] = {"name": plugin_dir.name}
+        else:
+            claude_data = load_json(claude_path)
+
+        merged, changes = merge_values(claude_data, expected_updates)
+        extra_fields = detect_extra_fields(claude_data)
+
         if args.check:
-            print(f"Claude manifest is missing: {claude_path}")
-            return 1
-        claude_data: dict[str, Any] = {"name": plugin_dir.name}
-    else:
-        claude_data = load_json(claude_path)
+            mismatches = []
+            for key, expected_value in expected_updates.items():
+                current_value = claude_data.get(key)
+                if current_value != expected_value:
+                    mismatches.append(
+                        f"{key}: expected {expected_value!r}, found {current_value!r}")
 
-    merged, changes = merge_values(claude_data, expected_updates)
-    extra_fields = detect_extra_fields(claude_data)
+            if extra_fields:
+                mismatches.extend(
+                    f"extra-field: {field}" for field in extra_fields)
 
-    if args.check:
-        mismatches = []
-        for key, expected_value in expected_updates.items():
-            current_value = claude_data.get(key)
-            if current_value != expected_value:
-                mismatches.append(
-                    f"{key}: expected {expected_value!r}, found {current_value!r}")
+            if not mismatches:
+                print(
+                    f"Claude manifest is already synchronized for {plugin_dir.name}.")
+                continue
 
-        if extra_fields:
-            mismatches.extend(
-                f"extra-field: {field}" for field in extra_fields)
+            print(f"Claude manifest would be updated for {plugin_dir.name}:")
+            for item in mismatches:
+                print(f"  - {item}")
+            failed = True
+            continue
 
-        if not mismatches:
-            print(
-                f"Claude manifest is already synchronized for {plugin_dir.name}.")
-            return 0
+        if changes or extra_fields:
+            claude_path.parent.mkdir(parents=True, exist_ok=True)
+            claude_path.write_text(
+                json.dumps(merged, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+            print(f"Updated Claude manifest: {claude_path}")
+            for change in changes:
+                print(f"  - {change}")
+            for field in extra_fields:
+                print(f"  - extra-field: {field}")
+        else:
+            print(f"Claude manifest already in sync for {plugin_dir.name}.")
 
-        print(f"Claude manifest would be updated for {plugin_dir.name}:")
-        for item in mismatches:
-            print(f"  - {item}")
-        return 1
-
-    if changes or extra_fields:
-        claude_path.parent.mkdir(parents=True, exist_ok=True)
-        claude_path.write_text(
-            json.dumps(merged, indent=2, ensure_ascii=False) + "\n",
-            encoding="utf-8",
-        )
-        print(f"Updated Claude manifest: {claude_path}")
-        for change in changes:
-            print(f"  - {change}")
-        for field in extra_fields:
-            print(f"  - extra-field: {field}")
-    else:
-        print(f"Claude manifest already in sync for {plugin_dir.name}.")
-
-    return 0
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

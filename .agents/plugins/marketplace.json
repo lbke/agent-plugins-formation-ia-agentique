@@ -15,6 +15,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Education"
+    },
+    {
+      "name": "fr.lbke.formation-langchain",
+      "source": {
+        "source": "local",
+        "path": "./plugins/formation-langchain"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Education"
     }
   ]
 }

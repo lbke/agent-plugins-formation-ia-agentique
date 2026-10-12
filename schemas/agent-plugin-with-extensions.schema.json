@@ -1,117 +1,53 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/schemas/com.openai.interface.schema.json",
-  "title": "OpenAI Agent Plugins manifest",
-  "description": "Validation schema for OpenAI Agent Plugins metadata, including package identity and the com.openai extension fields used for submission.",
+  "$id": "https://www.lbke.fr/schemas/agent-plugin-with-extensions.schema.json",
+  "title": "OpenAI Agent Plugins manifest extension",
+  "description": "Local validation schema for the OpenAI-specific `extensions.com.openai` block. It extends the canonical Agent Plugins manifest schema without replacing its base rules.",
   "type": "object",
-  "additionalProperties": false,
+  "allOf": [
+    {
+      "$ref": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
+    }
+  ],
   "properties": {
-    "$schema": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://agent-plugins.org/schemas/1.0.0/plugin.schema.json$"
-    },
-    "name": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 64,
-      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-      "description": "Stable package identifier."
-    },
-    "version": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 64,
-      "description": "Package release version."
-    },
-    "description": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 4000,
-      "description": "Package description."
-    },
-    "author": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 120
-        },
-        "email": {
-          "type": "string",
-          "format": "email",
-          "maxLength": 320
-        },
-        "url": {
-          "type": "string",
-          "format": "uri",
-          "pattern": "^https://.*$",
-          "maxLength": 2048
-        }
-      },
-      "required": ["name"]
-    },
-    "homepage": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https://.*$",
-      "maxLength": 2048
-    },
-    "repository": {
-      "type": "string",
-      "format": "uri",
-      "pattern": "^https?://.*$",
-      "maxLength": 2048
-    },
-    "license": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 120
-    },
-    "keywords": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "minLength": 1,
-        "maxLength": 120
-      },
-      "maxItems": 50
-    },
     "extensions": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
         "com.openai": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "id": {
-              "type": "string",
-              "minLength": 1,
-              "maxLength": 128
-            },
-            "interface": {
-              "$ref": "#/$defs/interface"
-            },
-            "onboardingSkill": {
-              "type": "string",
-              "minLength": 1,
-              "description": "Relative path to a skill used for setup onboarding."
-            },
-            "review": {
-              "$ref": "#/$defs/review"
-            },
-            "publication": {
-              "$ref": "#/$defs/publication"
-            }
-          }
+          "$ref": "#/$defs/comOpenAI"
         }
+      },
+      "additionalProperties": {
+        "type": "object"
       }
     }
   },
   "$defs": {
+    "comOpenAI": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "interface": {
+          "$ref": "#/$defs/interface"
+        },
+        "onboardingSkill": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Relative path to a skill used for setup onboarding."
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        },
+        "publication": {
+          "$ref": "#/$defs/publication"
+        }
+      }
+    },
     "interface": {
       "type": "object",
       "additionalProperties": false,

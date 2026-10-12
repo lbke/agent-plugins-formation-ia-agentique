@@ -19,10 +19,15 @@ jobs:
       - name: Create plugin archive
         run: |
           python3 scripts/package_plugin.py \
+            --plugin-path plugins/formation-langchain \
+            --output dist/formation-langchain.zip
+          python3 scripts/package_plugin.py \
             --plugin-path plugins/formation-ia-agentique \
             --output dist/formation-ia-agentique.zip
 
       - name: Publish GitHub release asset
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/formation-ia-agentique.zip
+          files: |
+            dist/formation-langchain.zip
+            dist/formation-ia-agentique.zip

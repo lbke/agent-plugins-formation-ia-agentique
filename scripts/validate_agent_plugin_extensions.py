@@ -8,6 +8,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+from builder import iter_plugin_dirs
+
 
 def load_json(path: Path) -> Any:
     if not path.exists():
@@ -111,21 +113,21 @@ def main() -> int:
     parser.add_argument(
         "--plugin-path",
         type=Path,
-        default=Path("plugins/formation-ia-agentique"),
-        help="Plugin directory containing the root plugin.json manifest.",
+        default=Path("plugins"),
+        help="Plugin directory or plugins root containing the root plugin.json manifests.",
     )
     parser.add_argument(
         "--schema",
         type=Path,
         default=None,
-        help="Optional path to the JSON schema file. Defaults to the plugin schema under schemas/com.openai.interface.schema.json.",
+        help="Optional path to the JSON schema file. Defaults to schemas/com.openai.interface.schema.json at the repository root.",
     )
     args = parser.parse_args()
 
-    plugin_dir = args.plugin_path.resolve()
-    plugin_data = load_json(plugin_dir / "plugin.json")
+    plugin_dirs = iter_plugin_dirs(args.plugin_path)
     if not args.schema:
-        schema_path = plugin_dir / "schemas" / "com.openai.interface.schema.json"
+        schema_path = Path(__file__).resolve().parents[1] / \
+            "schemas/agent-plugin-with-extensions.schema.json"
     else:
         schema_path = args.schema.resolve()
 
@@ -133,16 +135,26 @@ def main() -> int:
         raise FileNotFoundError(f"Schema file not found: {schema_path}")
 
     schema = load_json(schema_path)
-    interface_data = get_interface_from_plugin(plugin_data)
+    interface_schema = schema.get("$defs", {}).get("interface", schema)
+    failures: list[str] = []
 
-    errors = validate_schema(interface_data, schema)
-    if errors:
+    for plugin_dir in plugin_dirs:
+        plugin_data = load_json(plugin_dir / "plugin.json")
+        interface_data = get_interface_from_plugin(plugin_data)
+        errors = validate_schema(interface_data, interface_schema)
+        if errors:
+            failures.append(f"{plugin_dir.name}:")
+            for item in errors:
+                failures.append(f"  - {item}")
+            continue
+        print(f"OpenAI interface validation passed for {plugin_dir.name}.")
+
+    if failures:
         print("OpenAI interface validation failed:")
-        for item in errors:
-            print(f"  - {item}")
+        for item in failures:
+            print(item)
         return 1
 
-    print(f"OpenAI interface validation passed for {plugin_dir.name}.")
     return 0
 
 

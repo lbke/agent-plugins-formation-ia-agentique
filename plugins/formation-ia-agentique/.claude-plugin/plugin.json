@@ -2,7 +2,7 @@
   "name": "formation-ia-agentique",
   "displayName": "Formation IA agentique",
   "version": "1.0.10",
-  "description": "Apprendre à concevoir, utiliser et évaluer des systèmes d'IA agentique grâce à des explications et des exercices guidés.",
+  "description": "Découvrir les concepts de l'IA agentique et construire un parcours d'apprentissage adapté à ses objectifs.",
   "author": {
     "name": "LBKE",
     "url": "https://www.lbke.fr"
@@ -13,14 +13,16 @@
   "keywords": [
     "formation",
     "IA agentique",
-    "LangChain",
-    "LangGraph",
-    "MCP",
-    "RAG"
+    "agents IA"
   ],
   "icon": "./assets/agentique_512.png",
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
   "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
-  "documentationurl": "https://github.com/lbke/agent-plugins-formation-ia-agentique"
+  "documentationurl": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
+  "defaultPrompt": [
+    "Aide-moi à commencer une formation sur l'IA agentique.",
+    "Explique-moi ce qu'est un agent IA.",
+    "Aide-moi à choisir un parcours adapté à mon niveau."
+  ]
 }
