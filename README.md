@@ -62,3 +62,10 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 - Schéma JSON avec les extensions Agent Plugin
 - Gestion efficace multi-plugins : build global, build par plugin optionnel, définir une politique de versionnage (même version pour tous les plugins pour le moment)
 - Templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin.
+
+
+## Réferences
+
+- [Agent Plugins](https://agent-plugins.org/) : ChatGPT, VS Code, Cursor...
+- [Agent Skills](https://agentskills.io/home)
+- [Cursor markertlace](https://cursor.com/marketplace)
