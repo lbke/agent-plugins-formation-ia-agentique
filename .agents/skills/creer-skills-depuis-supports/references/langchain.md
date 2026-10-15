@@ -1,8 +1,8 @@
-# Préférences LangChain et LangGraph
+# LangChain and LangGraph preferences
 
-- Fichiers à fournir dans `data` :
-  - Le recap LangChain en 5 minutes
-  - Le guide pratique Python
-  - Les ressources Python du site de LBKE
-- Utiliser en priorité LangChain dans les skills, sauf si l'utilisateur veut créer des applications LangGraph explicitement.
-- Attention : même pour LangChain, on utilise le CLI `langgraph-cli` pour créer une application complète avec un serveur web et la déployer.
+- Files to provide in `data`:
+  - The 5-minute LangChain recap
+  - The Python practical guide
+  - LBKE Python resources
+- Prefer LangChain in skills unless the user explicitly wants to build LangGraph applications.
+- Note: even for LangChain, use the `langgraph-cli` CLI to create a complete application with a web server and deploy it.

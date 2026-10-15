@@ -1,46 +1,46 @@
 ---
 name: creer-skills-depuis-supports
-description: Transformer des supports de formation en skills opérationnelles publiées dans un plugin, en respectant les consignes éditoriales et techniques du dépôt.
+description: Transform training materials into operational skills published in a plugin while following the repository's editorial and technical guidelines.
 ---
 
-# Transformer des supports de formation en skills
+# Transform training support into skills
 
-Utilise cette skill pour créer ou mettre à jour des skills destinées aux utilisateurs du plugin à partir des supports de formation stockés dans `data/`.
+Use this skill to create or update skills intended for plugin users from the training materials stored in `data/`.
 
-1. Lire les diapositives dans l'ordre et noter leur sujet et leurs dépendances.
-2. Regrouper les diapositives qui servent un même objectif opérationnel. Créer un skill par cas d'usage autonome plutôt qu'un skill généraliste qui résume toute la formation.
-3. Parcourir l'ensemble des diapositives avant de conclure : chaque section utile doit être reprise dans un skill ou identifiée comme simple titre, transition ou contenu sans procédure exploitable.
-4. Rédiger les skills dans la langue du support et en suivant le format attendu par Claude (`SKILL.md` avec frontmatter `name` et `description`).
-5. Donner des étapes concrètes, les prérequis, les vérifications et les erreurs fréquentes. Ne pas présenter des versions, offres gratuites, interfaces ou tarifs susceptibles d'évoluer comme des faits permanents : inviter à vérifier la documentation actuelle du fournisseur.
-6. Corriger les erreurs techniques des supports plutôt que de les reproduire. Ne jamais inventer une exécution, une vérification ou une garantie.
-7. Ignorer les éléments purement organisationnels du guide pratique : dates, planning, contact, règles internes, procédures administratives ou sections de logistique. Les skills ne doivent retenir que les éléments réutilisables comme des actions, diagnostics, validations ou mises à niveau à faire avant le cours.
-8. Quand un guide pratique contient des sections de prérequis, les transformer en skills de mise en route plutôt qu'en un simple résumé. Par exemple, un guide qui recommande « mettre Python en place avant la formation » peut devenir des skills comme `demarrer-avec-python-pour-ia-agentique`, `valider-pre-requis-langchain` ou `preparer-environnement-developpement-langchain`.
-9. Chaque skill doit toujours répondre à une question concrète : « quand utiliser ce skill ? », « quels sont les prérequis ? », « comment le vérifier ? », « quelles erreurs fréquentes éviter ? ».
-10. Préférer des skills ciblés au niveau « mise en route » et « validation de niveau » plutôt que des synthèses trop larges. Un guide administratif ou de déroulé ne doit pas devenir un skill « tout-en-un » ; le contenu utile est souvent réparti entre plusieurs compétences indépendantes.
+1. Read the slides in order and note their topic and dependencies.
+2. Group slides that serve the same operational goal. Create one skill per autonomous use case rather than a general skill that summarises the whole training.
+3. Review all slides before concluding: every useful section should either be turned into a skill or identified as a simple title, transition, or content without actionable procedures.
+4. Write skills in the language of the support and follow the expected format for Claude (`SKILL.md` with frontmatter `name` and `description`).
+5. Provide concrete steps, prerequisites, checks, and common mistakes. Do not present evolving versions, free offers, interfaces, or pricing as permanent facts: invite the user to verify the current provider documentation.
+6. Correct technical errors in the support rather than reproducing them. Never invent an execution step, validation, or guarantee.
+7. Ignore purely organisational content in the practice guide: dates, schedules, contacts, internal rules, administrative procedures, or logistics sections. Skills should retain only reusable elements such as actions, diagnostics, validations, or setup steps to complete before the course.
+8. When a guide contains prerequisite sections, turn them into onboarding skills rather than a simple summary. For example, a guide recommending "set up Python before the training" can become skills such as `demarrer-avec-python-pour-ia-agentique`, `valider-pre-requis-langchain`, or `preparer-environnement-developpement-langchain`.
+9. Each skill must answer a concrete question: "when should this skill be used?", "what are the prerequisites?", "how do we verify it?", and "what common mistakes should be avoided?".
+10. Prefer targeted skills at the onboarding and readiness-validation level rather than overly broad summaries. An administrative or schedule guide should not become a generic "all-in-one" skill; the useful content is often distributed across several independent capabilities.
 
-## Exemple de transformation depuis un guide pratique
+## Example of transformation from a practical guide
 
-À partir d'un guide de formation, on peut extraire les éléments suivants :
+From a training guide, the following elements can be extracted:
 
-- les prérequis techniques à vérifier avant la formation ;
-- les outils nécessaires à l'environnement de travail ;
-- les bases Python à maîtriser avant d'entrer dans les frameworks ;
-- les vérifications minimales pour décider si l'apprenant est prêt.
+- technical prerequisites to verify before the training;
+- tools needed for the working environment;
+- Python basics to master before entering the frameworks;
+- minimum checks to decide whether the learner is ready.
 
-Dans ce dépôt, cela donne des skills de type :
+In this repository, this becomes skills such as:
 
-- `demarrer-avec-python-pour-ia-agentique` : aider un apprenant à installer et valider Python avant une formation IA agentique ;
-- `valider-pre-requis-langchain` : mesurer si les bases Python et l'environnement sont suffisants pour suivre un cours LangChain/LangGraph ;
-- `preparer-environnement-developpement-langchain` : préparer un environnement de travail cohérent avant de lancer un projet.
+- `demarrer-avec-python-pour-ia-agentique`: help a learner install and validate Python before an agentic AI training;
+- `valider-pre-requis-langchain`: determine whether the Python basics and environment are sufficient for a LangChain/LangGraph course;
+- `preparer-environnement-developpement-langchain`: prepare a consistent working environment before starting a project.
 
-Cette logique évite de recopier le cadre administratif du guide et garde le contenu utile sous une forme exploitable par un assistant ou un apprenant.
+This approach avoids copying the administrative structure of the guide and keeps the useful content in a form that can be used by an assistant or a learner.
 
-## Règles techniques
+## Technical rules
 
-- Utiliser en priorité LangChain dans les skills, sauf si l'utilisateur veut explicitement créer des applications LangGraph.
-- Même pour LangChain, utiliser le CLI `langgraph-cli` pour créer une application complète avec un serveur web et la déployer.
-- Consulter [les préférences LangChain et LangGraph](references/langchain.md) pour les précisions propres à la formation.
-- Ajouter un petit script seulement lorsqu'il automatise une vérification directement liée au cas d'usage du skill. Le script doit avoir une interface documentée, fonctionner sans dépendances inutiles, signaler clairement les erreurs, ne jamais afficher de secrets et ne jamais modifier ou transmettre les identifiants de l'utilisateur.
-- Les skills publiées résident sous `plugins/<nom-du-plugin>/skills/<nom-du-skill>/`. Les skills internes de développement résident sous `.agents/skills/` et ne doivent pas être copiées dans le plugin.
-- Mettre à jour le README lorsqu'on ajoute ou retire des skills publiées ou des commandes utilisateur.
-- Valider les chemins, le frontmatter et les scripts concernés après chaque changement.
+- Prefer LangChain in skills unless the user explicitly wants to build LangGraph applications.
+- Even for LangChain, use the `langgraph-cli` CLI to create a complete application with a web server and deploy it.
+- Consult [LangChain and LangGraph preferences](references/langchain.md) for training-specific details.
+- Add a small script only when it automates a check directly tied to the skill's use case. The script should have a documented interface, work without unnecessary dependencies, clearly report errors, never display secrets, and never modify or transmit the user's credentials.
+- Published skills live under `plugins/<plugin-name>/skills/<skill-name>/`. Internal development skills live under `.agents/skills/` and should not be copied into the plugin.
+- Update the README when adding or removing published skills or user-facing commands.
+- Validate the relevant paths, frontmatter, and scripts after each change.
