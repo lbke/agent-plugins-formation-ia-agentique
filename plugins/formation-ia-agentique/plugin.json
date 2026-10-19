@@ -10,11 +10,7 @@
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
   "license": "MIT",
-  "keywords": [
-    "formation",
-    "IA agentique",
-    "agents IA"
-  ],
+  "keywords": ["formation", "IA agentique", "agents IA"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -37,11 +33,7 @@
       },
       "onboardingSkill": "./skills/demarrer-sa-formation-ia-agentique/SKILL.md",
       "publication": {
-        "countries": [
-          "FR",
-          "BE",
-          "CH"
-        ],
+        "countries": ["FR", "BE", "CH"],
         "release_notes": "Parcours de découverte de l'IA agentique"
       }
     }

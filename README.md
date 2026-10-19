@@ -69,4 +69,4 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 - [Agent Plugins](https://agent-plugins.org/) pour ChatGPT, VS Code, Cursor...
 - [Agent Skills](https://agentskills.io/home)
 - Cursor :  [marketplace](https://cursor.com/marketplace)
-- Claude : [documentation](https://code.claude.com/docs/en/plugins/overview),
+- Claude : [documentation](https://code.claude.com/docs/en/plugins/overview), [reference plugin.json](https://code.claude.com/docs/en/plugins/manifest-reference)

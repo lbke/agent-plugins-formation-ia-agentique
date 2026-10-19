@@ -10,12 +10,8 @@
   "license": "MIT",
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "keywords": [
-    "formation",
-    "LangChain",
-    "LangGraph",
-    "agents IA"
-  ],
+  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
+  "icon": "./assets/langchain_agentique_512.png",
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
   "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",

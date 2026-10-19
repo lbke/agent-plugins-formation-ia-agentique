@@ -16,6 +16,7 @@ split-slides slidev_file:
 # Validate the plugin manifest and components with Claude Code.
 validate-claude:
     claude plugin validate .
+    for plugin_dir in plugins/*; do [ -d "$plugin_dir" ] || continue; plugin_name=$(basename "$plugin_dir"); claude plugin validate "$plugin_dir"; done
 
 # Load a plugin in a Claude Code session.
 launch-claude plugin_name='formation-langchain':

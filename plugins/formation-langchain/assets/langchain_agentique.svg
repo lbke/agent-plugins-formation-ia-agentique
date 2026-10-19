@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="100%"
+   height="100%"
+   viewBox="0 0 512 512"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+   id="svg3"
+   sodipodi:docname="langchain_agentique.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs3"><linearGradient
+     id="linearGradient3"
+     inkscape:collect="always"><stop
+       style="stop-color:#e5f4ff;stop-opacity:1;"
+       offset="0"
+       id="stop3" /><stop
+       style="stop-color:#7cc7ff;stop-opacity:1;"
+       offset="1"
+       id="stop4" /></linearGradient><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient3"
+     id="linearGradient6"
+     x1="72"
+     y1="256"
+     x2="440"
+     y2="256"
+     gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
+   id="namedview3"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="0.82035435"
+   inkscape:cx="543.6675"
+   inkscape:cy="401.04621"
+   inkscape:window-width="2493"
+   inkscape:window-height="1371"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g3" />
+    <g
+   transform="matrix(1,0,0,1,-1440,0)"
+   id="g3">
+        <rect
+   x="1440.33"
+   y="0"
+   width="512"
+   height="512"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;fill:#0b1017;opacity:1;fill-opacity:1"
+   id="rect1"
+   transform="translate(-0.3333)" /><path
+   d="M192,256L72,186L80,176L221.48,194.466L256,32L292.399,193.962L432,176L440,186L320,256L424,312L428,328L292.534,317.534L256,480L221.345,317.031L84,328L88,312L192,256Z"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;fill:url(#linearGradient6);opacity:1;fill-opacity:1"
+   id="path1"
+   transform="translate(1439.9967,4)" />
+    </g>
+</svg>

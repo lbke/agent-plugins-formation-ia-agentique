@@ -10,12 +10,7 @@
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
   "license": "MIT",
-  "keywords": [
-    "formation",
-    "LangChain",
-    "LangGraph",
-    "agents IA"
-  ],
+  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -32,16 +27,13 @@
           "Aide-moi à démarrer un projet LangChain ou LangGraph.",
           "Aide-moi à créer un agent avec LangChain."
         ],
-        "brandColor": "#222d8f",
-        "brandColorDark": "#ffffff"
+        "logo": "./assets/langchain_agentique_512.png",
+        "brandColor": "#0d1013",
+        "brandColorDark": "#b1deff"
       },
       "onboardingSkill": "./skills/demarrer-formation-langchain/SKILL.md",
       "publication": {
-        "countries": [
-          "FR",
-          "BE",
-          "CH"
-        ],
+        "countries": ["FR", "BE", "CH"],
         "release_notes": "Parcours centré sur LangChain et LangGraph"
       }
     }
