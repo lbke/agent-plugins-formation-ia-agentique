@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fr.lbke.formation-langchain",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Apprendre à concevoir des applications et des agents avec LangChain et LangGraph grâce à des explications progressives et des exercices guidés.",
   "author": {
     "name": "LBKE",
@@ -10,7 +10,12 @@
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
   "license": "MIT",
-  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
+  "keywords": [
+    "formation",
+    "LangChain",
+    "LangGraph",
+    "agents IA"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -33,7 +38,11 @@
       },
       "onboardingSkill": "./skills/demarrer-formation-langchain/SKILL.md",
       "publication": {
-        "countries": ["FR", "BE", "CH"],
+        "countries": [
+          "FR",
+          "BE",
+          "CH"
+        ],
         "release_notes": "Parcours centré sur LangChain et LangGraph"
       }
     }
