@@ -10,19 +10,10 @@
   "license": "MIT",
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "keywords": [
-    "formation",
-    "IA agentique",
-    "agents IA"
-  ],
+  "keywords": ["formation", "IA agentique", "agents IA"],
   "icon": "./assets/agentique_512.png",
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
   "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
-  "documentationurl": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "defaultPrompt": [
-    "Aide-moi à commencer une formation sur l'IA agentique.",
-    "Explique-moi ce qu'est un agent IA.",
-    "Aide-moi à choisir un parcours adapté à mon niveau."
-  ]
+  "documentationUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique"
 }

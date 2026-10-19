@@ -25,7 +25,6 @@ CLAUDE_MANIFEST_KEYS = {
     "termsOfServiceUrl",
     "documentationUrl",
     "defaultEnabled",
-    "defaultPrompt",
     "dependencies",
     "settings",
     "userConfig",
@@ -52,6 +51,12 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def get_openai_interface(agent_data: dict[str, Any]) -> dict[str, Any]:
+    """
+    Agent plugin "com.openai.interface" is the source of truth 
+    for most fields you need to publish a plugin elsewhere
+    icons, documentation URLs etc.
+
+    """
     extensions = agent_data.get("extensions") or {}
     openai_extension = extensions.get("com.openai") or {}
     interface = openai_extension.get("interface") or {}
@@ -60,14 +65,10 @@ def get_openai_interface(agent_data: dict[str, Any]) -> dict[str, Any]:
 
 def build_sync_map(agent_data: dict[str, Any]) -> dict[str, Any]:
     sync_map: dict[str, Any] = {}
-    interface = get_openai_interface(agent_data)
+    openai_interface = get_openai_interface(agent_data)
 
-    if "version" in agent_data and agent_data.get("version") is not None:
-        sync_map["version"] = agent_data["version"]
-
-    if "description" in agent_data and agent_data.get("description") is not None:
-        sync_map["description"] = agent_data["description"]
-
+    # Fields that can be defined in both agent plugin default fields and openai interface
+    # #agent plugin has priority
     author = agent_data.get("author")
     if isinstance(author, dict) and author.get("name"):
         normalized_author: dict[str, Any] = {"name": author["name"]}
@@ -76,41 +77,35 @@ def build_sync_map(agent_data: dict[str, Any]) -> dict[str, Any]:
         if author.get("email"):
             normalized_author["email"] = author["email"]
         sync_map["author"] = normalized_author
-
-    if "license" in agent_data and agent_data.get("license") is not None:
-        sync_map["license"] = agent_data["license"]
-
     homepage = agent_data.get("homepage")
     if homepage is not None:
         sync_map["homepage"] = homepage
-    elif isinstance(interface.get("websiteURL"), str) and interface["websiteURL"].strip():
-        sync_map["homepage"] = interface["websiteURL"]
+    elif openai_interface["websiteURL"]:
+        sync_map["homepage"] = openai_interface["websiteURL"]
 
-    if "repository" in agent_data and agent_data.get("repository") is not None:
-        sync_map["repository"] = agent_data["repository"]
+    # Agent plugin keys
+    for claude_key, agent_plugin_key in (
+        ("license", "license"),
+        ("repository", "repository"),
+        ("keywords", "keywords"),
+        ("version", "version"),
+        ("description", "description")
+    ):
+        value = agent_data.get(agent_plugin_key)
+        if value:
+            sync_map[claude_key] = value
 
-    if "keywords" in agent_data and isinstance(agent_data.get("keywords"), list):
-        sync_map["keywords"] = list(agent_data["keywords"])
-
-    if isinstance(interface.get("displayName"), str) and interface["displayName"].strip():
-        sync_map["displayName"] = interface["displayName"].strip()
-
-    if isinstance(interface.get("supportURL"), str) and interface["supportURL"].strip():
-        sync_map["supportUrl"] = interface["supportURL"].strip()
-
-    if isinstance(interface.get("privacyPolicyURL"), str) and interface["privacyPolicyURL"].strip():
-        sync_map["privacyPolicyUrl"] = interface["privacyPolicyURL"].strip()
-
-    if isinstance(interface.get("termsOfServiceURL"), str) and interface["termsOfServiceURL"].strip():
-        sync_map["termsOfServiceUrl"] = interface["termsOfServiceURL"].strip()
-
-    if isinstance(interface.get("logo"), str) and interface["logo"].strip():
-        sync_map["icon"] = interface["logo"].strip()
-
-    if isinstance(interface.get("defaultPrompt"), list):
-        sync_map["defaultPrompt"] = list(interface["defaultPrompt"])
-    elif isinstance(interface.get("defaultPrompt"), str):
-        sync_map["defaultPrompt"] = [interface["defaultPrompt"]]
+    # Open Ai interface keys
+    for claude_key, openai_interface_key in (
+        ("displayName", "displayName"),
+        ("supportUrl", "supportURL"),
+        ("privacyPolicyUrl", "privacyPolicyUURL"),
+        ("termsOfServiceUrl", "termsOfServiceURL"),
+        ("logo", "icon"),
+    ):
+        value = openai_interface.get(openai_interface_key)
+        if value:
+            sync_map[claude_key] = value
 
     return sync_map
 

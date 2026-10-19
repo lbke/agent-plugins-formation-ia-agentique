@@ -23,7 +23,7 @@ launch-claude plugin_name='formation-langchain':
 
 # Synchronize the Claude manifests from the Agent Plugin manifests.
 # The root plugin.json stays authoritative; the Claude `name` remains separate.
-sync-claude-plugin:
+sync-claude:
     python3 scripts/sync_claude_plugin.py --plugin-path "plugins"
 
 # *** AGENT PLUGINS

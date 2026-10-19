@@ -1,80 +1,72 @@
-# LBKE Agentic AI Training
+# Formation IA agentique LBKE
 
-This repository offers two complementary plugins: `formation-langchain`, focused on learning LangChain and LangGraph, and `formation-ia-agentique`, a gateway for discovering agentic AI concepts and choosing a learning path.
+Le dépôt propose deux plugins complémentaires : `formation-langchain`, centré sur l'apprentissage de LangChain et LangGraph, et `formation-ia-agentique`, un point d'entrée pour découvrir les concepts de l'IA agentique et choisir un parcours.
 
-The `formation-langchain` plugin guides the user from Python environment setup to creating a LangChain or LangGraph agent, then to deployment. The `formation-ia-agentique` plugin helps users start training and directs them toward the LangChain technical path when needed. Internal skills for creation and maintenance are kept in `.agents/skills/`, separately from the skills distributed with the plugins.
+Le plugin `formation-langchain` accompagne l'utilisateur de la préparation de l'environnement Python à la création d'un agent ou d'un graphe LangGraph, puis au déploiement. Le plugin `formation-ia-agentique` aide à démarrer une formation et oriente vers le parcours technique LangChain si nécessaire. Les skills internes de création et de maintenance sont conservées dans `.agents/skills/`, séparément des skills distribuées avec les plugins.
 
-To go further in your training, explore the catalogue of [LBKE short-formations in agentic AI](https://www.lbke.fr/formations).
+Pour allez plus loin dans votre formation, découvrez le catalogue de [formations courtes à l'IA agentique de LBKE](https://www.lbke.fr/formations).
 
-## Plugin installation
+## Installation du plugin
 
-### Via the ZIP file
+### Via le fichier zip
 
-Download the zipped version of the plugin.
+Téléchargez la version zippée du plugin.
 
-### Via the source files - Claude Code
+### Via les sources - Claude Code
 
-Clone the repository.
+Clonez le dépôt.
 
-The repository provides the Claude marketplace **Formations LBKE** in `.claude-plugin/marketplace.json`. Add it with `claude plugin marketplace add .`
+Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugin/marketplace.json`. Ajoutez-la avec `claude plugin marketplace add .`
 
-Then install the plugin with `claude plugin install formation-langchain@lbke-formations` or `claude plugin install formation-ia-agentique@lbke-formations`. To load the LangChain plugin directly during development, use `just launch-claude` (or `claude --plugin-dir plugins/formation-langchain`). To launch the other plugin, use `just launch-claude formation-ia-agentique`.
+Puis installez le plugin avec `claude plugin install formation-langchain@lbke-formations` ou `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin LangChain pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-langchain`). Pour lancer l'autre plugin, utilisez `just launch-claude formation-ia-agentique`.
 
-### Via the source files - ChatGPT, VS Code (Agent Plugins)
+### Via les sources - ChatGPT, VS Code (Agent Plugins)
 
-The plugins `plugins/formation-langchain/` and `plugins/formation-ia-agentique/` each include their Claude and Agent Plugins manifests as well as their skills. The local marketplaces are defined in `.agents/plugins/marketplace.json` and `.claude-plugin/marketplace.json`; regenerate their lists after adding or removing a plugin with `just update-marketplaces`. In the ChatGPT desktop app, open the repository as a local trusted project, then restart the app to make the **Formations LBKE** marketplace appear in the plugin directory. You can then install **Formation LangChain** and **Formation IA agentique**.
+Les plugins `plugins/formation-langchain/` et `plugins/formation-ia-agentique/` contiennent chacun leurs manifestes Claude et Agent Plugins ainsi que leurs skills. Les marketplaces locales sont définies dans `.agents/plugins/marketplace.json` et `.claude-plugin/marketplace.json` ; régénérez leurs listes après l'ajout ou le retrait d'un plugin avec `just update-marketplaces`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation LangChain** et **Formation IA agentique**.
 
-This plugin provides skills only: it does not include an MCP server or connector. The local marketplace allows you to test or distribute it in a repository; it does not publish the plugin to the public ChatGPT directory.
+Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de connecteur. La marketplace locale permet de le tester ou de le distribuer dans un dépôt ; elle ne publie pas le plugin dans le répertoire public de ChatGPT.
 
-Both marketplaces reference the plugin under `plugins/`, which makes it possible to add more without changing their structure.
+Les deux marketplaces référencent le plugin sous `plugins/`, ce qui permet d'en ajouter d'autres sans modifier leur structure.
 
-## Data
+## Données
 
-The plugin contains no connector, sends no data to an external service, and stores no data. Messages you send to Claude are processed by Claude according to the confidentiality conditions and settings applicable to your account.
+Le plugin ne contient aucun connecteur, n'envoie aucune donnée à un service externe et ne stocke pas de données. Les messages que vous adressez à Claude sont traités par Claude selon les conditions et paramètres de confidentialité applicables à votre compte.
 
-## Commands
+## Commandes
 
-Install [just](https://github.com/casey/just), then run `just` to display the common commands. Use `just validate-claude` to check the marketplace and its Claude plugins, `just launch-claude` to load the LangChain plugin in Claude Code, `just zip-plugin formation-langchain` or `just zip-plugin formation-ia-agentique` to generate an installable ZIP archive, or `just split-slides data/langchain-recap-5mn.md` to extract numbered slides. The release workflow generates archives for both plugins.
+Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin LangChain dans Claude Code, `just zip-plugin formation-langchain` ou `just zip-plugin formation-ia-agentique` pour générer une archive ZIP installable, ou `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées. Le workflow de release génère les archives des deux plugins.
 
 ## Contributions
 
-GitHub repository: https://github.com/lbke/agent-plugins-formation-ia-agentique
+Dépôt GitHub : https://github.com/lbke/agent-plugins-formation-ia-agentique
 
-See the skill "poser-une-question-a-un-formateur-ia" to send a question or suggestion for improvement to the LBKE agentic AI trainers via a GitHub issue.
+Voir la skill "poser-une-question-a-un-formateur-ia" pour transmettre une question ou suggestion d'amélioration aux formateurs IA agentique de LBKE, via un ticket GitHub.
 
-This repository is also a base example of multi-platform AI plugin development.
+Ce dépôt constitue aussi un exemple de base de code pour développer des plugins IA multi-plateformes.
 
 ## Roadmap
 
-### Project
+### Projet
 
-- Publish the repository on MCP marketplaces.
+- Publier le dépôt sur les marketplaces MCP.
 
 ### Concepts
 
 - MCP
 - RAG
 - Mastra (JavaScript)
-- Fundamentals of agentic AI
+- Fondamentaux de l'agentique
 
-### Structure as a framework
+### Structuration sous forme de framework
 
-- JSON schema with Agent Plugin extensions
-- Efficient multi-plugin management: global build, optional per-plugin build, and defining a versioning policy (same version for all plugins for the moment)
-- Jinja templates for reusing prompt blocks, a compilation step, and differentiating internal skills (generated from training materials) from published skills in the plugin.
+- Schéma JSON avec les extensions Agent Plugin
+- Gestion efficace multi-plugins : build global, build par plugin optionnel, définir une politique de versionnage (même version pour tous les plugins pour le moment)
+- Templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin.
 
-## References
 
-### Standards for plugins and skills
+## Réferences
 
-- [Agent Plugins](https://agent-plugins.org/): ChatGPT, VS Code, Cursor...
+- [Agent Plugins](https://agent-plugins.org/) pour ChatGPT, VS Code, Cursor...
 - [Agent Skills](https://agentskills.io/home)
-
-## Plugin publication interfaces
-
-- [Claude](https://claude.ai/directory/manage)
-- [OpenAI](https://platform.openai.com/plugins) (redirects to the desktop app) and [OpenAI documentation](https://developers.openai.com/plugins/deploy/submission)
-
-## Plugin marketplaces
-
-- [Cursor marketplace](https://cursor.com/marketplace)
+- Cursor :  [marketplace](https://cursor.com/marketplace)
+- Claude : [documentation](https://code.claude.com/docs/en/plugins/overview),

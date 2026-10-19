@@ -10,19 +10,9 @@
   "license": "MIT",
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "keywords": [
-    "formation",
-    "LangChain",
-    "LangGraph",
-    "agents IA"
-  ],
+  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
   "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
-  "documentationurl": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "defaultPrompt": [
-    "Démarre ma formation LangChain et aide-moi à définir mon parcours.",
-    "Aide-moi à démarrer un projet LangChain ou LangGraph.",
-    "Aide-moi à créer un agent avec LangChain."
-  ]
+  "documentationUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique"
 }
