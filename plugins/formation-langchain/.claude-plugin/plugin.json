@@ -1,7 +1,7 @@
 {
   "name": "formation-langchain",
   "displayName": "Formation LangChain",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Apprendre à concevoir des applications et des agents avec LangChain et LangGraph grâce à des explications progressives et des exercices guidés.",
   "author": {
     "name": "LBKE",
@@ -10,7 +10,12 @@
   "license": "MIT",
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
+  "keywords": [
+    "formation",
+    "LangChain",
+    "LangGraph",
+    "agents IA"
+  ],
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
   "supportUrl": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",

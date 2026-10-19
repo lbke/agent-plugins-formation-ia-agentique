@@ -1,7 +1,7 @@
 {
   "name": "formation-ia-agentique",
   "displayName": "Formation IA agentique",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Découvrir les concepts de l'IA agentique et construire un parcours d'apprentissage adapté à ses objectifs.",
   "author": {
     "name": "LBKE",
@@ -10,7 +10,11 @@
   "license": "MIT",
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
-  "keywords": ["formation", "IA agentique", "agents IA"],
+  "keywords": [
+    "formation",
+    "IA agentique",
+    "agents IA"
+  ],
   "icon": "./assets/agentique_512.png",
   "termsOfServiceUrl": "https://www.lbke.fr/cgv",
   "privacyPolicyUrl": "https://www.lbke.fr/cgv",
