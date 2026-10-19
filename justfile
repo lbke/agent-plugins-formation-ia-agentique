@@ -42,7 +42,7 @@ update-marketplaces:
 
 # Package every plugin as a ZIP archive for direct installation or GitHub release assets.
 # Example: just zip-plugin
-zip-plugins:
+zip:
     for plugin_dir in plugins/*; do [ -d "$plugin_dir" ] || continue; plugin_name=$(basename "$plugin_dir"); python3 scripts/package_plugin.py --plugin-path "$plugin_dir" --output "dist/$plugin_name.zip"; done
 
 # *** Publish

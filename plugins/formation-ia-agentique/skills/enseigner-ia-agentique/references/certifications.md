@@ -1,0 +1,1 @@
+https://www.lbke.fr/actus/certifications-competences-ia
