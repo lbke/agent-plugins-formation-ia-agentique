@@ -97,4 +97,4 @@ python -c "print('environnement OK')"
 
 ## À la suite de ce skill
 
-Quand l'environnement est prêt, passe au skill `demarrer-projet-langgraph` ou à `valider-pre-requis-langchain` selon le besoin : préparation technique ou validation de niveau.
+Quand l'environnement est prêt, passe au skill `demarrer-projet-langgraph` ou à `valider-prerequis-langchain` selon le besoin : préparation technique ou validation de niveau.

@@ -14,7 +14,7 @@ Use this skill to create or update skills intended for plugin users from the tra
 5. Provide concrete steps, prerequisites, checks, and common mistakes. Do not present evolving versions, free offers, interfaces, or pricing as permanent facts: invite the user to verify the current provider documentation.
 6. Correct technical errors in the support rather than reproducing them. Never invent an execution step, validation, or guarantee.
 7. Ignore purely organisational content in the practice guide: dates, schedules, contacts, internal rules, administrative procedures, or logistics sections. Skills should retain only reusable elements such as actions, diagnostics, validations, or setup steps to complete before the course.
-8. When a guide contains prerequisite sections, turn them into onboarding skills rather than a simple summary. For example, a guide recommending "set up Python before the training" can become skills such as `demarrer-avec-python-pour-ia-agentique`, `valider-pre-requis-langchain`, or `preparer-environnement-developpement-langchain`.
+8. When a guide contains prerequisite sections, turn them into onboarding skills rather than a simple summary. For example, a guide recommending "set up Python before the training" can become skills such as `demarrer-avec-python-pour-ia-agentique`, `valider-prerequis-langchain`, or `preparer-environnement-developpement-langchain`.
 9. Each skill must answer a concrete question: "when should this skill be used?", "what are the prerequisites?", "how do we verify it?", and "what common mistakes should be avoided?".
 10. Prefer targeted skills at the onboarding and readiness-validation level rather than overly broad summaries. An administrative or schedule guide should not become a generic "all-in-one" skill; the useful content is often distributed across several independent capabilities.
 
@@ -30,7 +30,7 @@ From a training guide, the following elements can be extracted:
 In this repository, this becomes skills such as:
 
 - `demarrer-avec-python-pour-ia-agentique`: help a learner install and validate Python before an agentic AI training;
-- `valider-pre-requis-langchain`: determine whether the Python basics and environment are sufficient for a LangChain/LangGraph course;
+- `valider-prerequis-langchain`: determine whether the Python basics and environment are sufficient for a LangChain/LangGraph course;
 - `preparer-environnement-developpement-langchain`: prepare a consistent working environment before starting a project.
 
 This approach avoids copying the administrative structure of the guide and keeps the useful content in a form that can be used by an assistant or a learner.

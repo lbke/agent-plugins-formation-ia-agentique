@@ -63,10 +63,22 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 - Gestion efficace multi-plugins : build global, build par plugin optionnel, définir une politique de versionnage (même version pour tous les plugins pour le moment)
 - Templates jinja pour a réutilisation de blocs de prompts, étape de compilation, différenciation des skills internes (génération de skills à partir de support de formation) et publiées dans le plugin.
 
-
 ## Réferences
+
+### Standards pour la structure des plugins et des skills
 
 - [Agent Plugins](https://agent-plugins.org/) pour ChatGPT, VS Code, Cursor...
 - [Agent Skills](https://agentskills.io/home)
-- Cursor :  [marketplace](https://cursor.com/marketplace)
+
+## Documentation technique
+
 - Claude : [documentation](https://code.claude.com/docs/en/plugins/overview), [reference plugin.json](https://code.claude.com/docs/en/plugins/manifest-reference)
+
+## Interfaces de publication de plugins
+
+- [Publication pour Claude](https://claude.ai/directory/manage)
+- [Publication pour OpenAI](https://platform.openai.com/plugins) (bouton "upload") et [Documentation pour OpenAI](https://developers.openai.com/plugins/deploy/submission)
+
+## Marketplaces de plugins
+
+- [Cursor marketplace](https://cursor.com/marketplace)
