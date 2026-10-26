@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fr.lbke.formation-ia-agentique",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Découvrir les concepts de l'IA agentique et construire un parcours d'apprentissage adapté à ses objectifs.",
   "author": {
     "name": "LBKE",
