@@ -5,7 +5,7 @@ description: Transmettre une question ou suggestion d'amélioration de l'utilisa
 
 # Améliorer ce plugin
 
-Utilise ce skill quand l'utilisateur souhaite proposer une amélioration, remonter un bug, suggérer une fonctionnalité ou demander une évolution du plugin.
+Utilise ce skill quand l'utilisateur souhaite proposer une amélioration, remonter un bug, suggérer une fonctionnalité ou demander une évolution du plugin auprès de l'organisme de formation LBKE.
 
 ## Objectif
 

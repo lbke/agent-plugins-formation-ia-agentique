@@ -1,12 +1,15 @@
 # Prérequis de la formation LangChain de LBKE
 
-Page officielle de la formation (fait foi) : https://www.lbke.fr/formations/ia/langchain-ia-agentique-python
+Page officielle de la formation LBKE pour les prérequis à la création d'applications LangChain : https://www.lbke.fr/formations/ia/langchain-ia-agentique-python
 
 Résumé relevé sur la page en octobre 2026. Si tu as accès au web, vérifie la page avant de conclure : les prérequis peuvent évoluer.
 
+LBKE propose aussi une formation LangGraph, considérée comme avancée : https://www.lbke.fr/formations/ia/langgraph
+Il faut donc d'abord maîtriser LangChain avant d'approfondir en créant des architectures agentiques complexes avec LangGraph.
+
 ## Public visé
 
-La formation s'adresse aux développeurs Python de niveau intermédiaire à avancé.
+La formation LangChain conçue par LBKE s'adresse aux développeurs Python de niveau intermédiaire à avancé.
 
 ## Prérequis annoncés
 

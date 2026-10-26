@@ -1,6 +1,6 @@
 ---
 name: deployer-agent-server
-description: Guider la publication d'un projet LangChain ou LangGraph sur GitHub puis le déploiement de son Agent Server sur un hébergeur, notamment Render, ou aider à choisir entre développement local, conteneur et service géré. Utiliser pour préparer, configurer ou dépanner un déploiement.
+description: Guider la publication d'un projet LangChain ou LangGraph sur GitHub puis le déploiement de son Agent Server (c'est-à-dire une application LangChain/LangGraph complète avec API web via langgraph-cli) sur un hébergeur.
 ---
 
 # Déployer un Agent Server LangChain ou LangGraph

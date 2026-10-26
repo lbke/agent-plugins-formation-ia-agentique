@@ -5,7 +5,7 @@ description: Vérifier si un apprenant remplit les prérequis officiels de la fo
 
 # Valider ses prérequis pour la formation LangChain
 
-Utilise ce skill quand un apprenant ou une apprenante souhaite savoir s'il est prêt pour la formation « LangChain - agents IA en Python » de LBKE, ou plus généralement pour une formation LangChain, LangGraph ou IA agentique, ou quand il demande si ses compétences actuelles sont suffisantes avant de commencer.
+Utilise ce skill quand un apprenant ou une apprenante souhaite savoir s'il est prêt pour une formation LangChain, LangGraph ou IA agentique ou spécifiquement la formation « LangChain - agents IA en Python » de LBKE, ou plus généralement , ou quand il demande si ses compétences actuelles sont suffisantes avant de commencer.
 
 Les prérequis de référence sont ceux de la page officielle de la formation, résumés dans `references/formation-langchain.md`. Cette page fait foi : si tu as accès au web, consulte-la pour vérifier que la liste n'a pas évolué.
 
@@ -81,6 +81,10 @@ Vérifie qu'il peut se connecter à chacun. Une clé d'accès LLM avec un forfai
 ### 5. Matériel
 
 Un ordinateur portable est requis, avec un accès Internet, un navigateur et la possibilité d'installer des outils (ou, à défaut, de travailler dans Google Colab).
+
+## 6. Pour LangGraph
+
+On considère LangGraph comme plus bas-niveau que LangChain, on recommande donc de maîtriser LangChain avant d'apprendre LangGraph. Parfois l'apprenant peut avoir au contraire testé LangGraph par le passé, et veut découvrir LangChain (notamment la boucle agentique introduite dans la v1 en novembre 2025), ce sens là est aussi possible.
 
 ## Interprétation du résultat
 
