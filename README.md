@@ -6,13 +6,16 @@ Le plugin `formation-langchain` accompagne l'utilisateur de la préparation de l
 
 Pour allez plus loin dans votre formation, découvrez le catalogue de [formations courtes à l'IA agentique de LBKE](https://www.lbke.fr/formations).
 
+Le fichier `AGENTS.md` explique le fonctionnement de la base de code, pour les humains et pour l'IA.
+
 ## Installation du plugin
+
 
 ### Via le fichier zip
 
 Téléchargez la version zippée du plugin.
 
-### Via les sources - Claude Code
+### Claude Code via les sources
 
 Clonez le dépôt.
 
@@ -20,13 +23,29 @@ Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugi
 
 Puis installez le plugin avec `claude plugin install formation-langchain@lbke-formations` ou `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin LangChain pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-langchain`). Pour lancer l'autre plugin, utilisez `just launch-claude formation-ia-agentique`.
 
-### Via les sources - ChatGPT, VS Code (Agent Plugins)
+### ChatGPT, VS Code (Agent Plugins) via les sources
 
 Les plugins `plugins/formation-langchain/` et `plugins/formation-ia-agentique/` contiennent chacun leurs manifestes Claude et Agent Plugins ainsi que leurs skills. Les marketplaces locales sont définies dans `.agents/plugins/marketplace.json` et `.claude-plugin/marketplace.json` ; régénérez leurs listes après l'ajout ou le retrait d'un plugin avec `just update-marketplaces`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation LangChain** et **Formation IA agentique**.
 
 Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de connecteur. La marketplace locale permet de le tester ou de le distribuer dans un dépôt ; elle ne publie pas le plugin dans le répertoire public de ChatGPT.
 
 Les deux marketplaces référencent le plugin sous `plugins/`, ce qui permet d'en ajouter d'autres sans modifier leur structure.
+
+### GitHub Copilot - en ligne de commande
+
+GitHub Copilot ne propose pas de marketplace unifiée à ce jour, il faut donc d'abord configurer la marketplace `lbke-formations` via GitHub, puis installer chaque plugin proposé par LBKE. Quelques commandes suffisent.
+
+```sh
+# Installer la marketplace
+copilot plugin marketplace add lbke/agent-plugins-formation-ia-agentique
+copilot plugin marketplace browse lbke-formations
+# Installer les plugins
+copilot plugin install formation-langchain@lbke-formations
+copilot plugin install ia-agentique@lbke-formations
+# Etc. pour chaque plugin
+```
+
+[Documentation de l'installation de plugins pour GitHub Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing) ([documentation équivalente pour VS Code via Copilot](https://code.visualstudio.com/docs/agent-customization/agent-plugins))
 
 ### Bonne pratique : menez un audit de sécurité
 
@@ -77,6 +96,8 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 ## Documentation technique
 
 - Claude : [documentation](https://code.claude.com/docs/en/plugins/overview), [reference plugin.json](https://code.claude.com/docs/en/plugins/manifest-reference)
+- VSCode : [documentation Agent Plugin](https://code.visualstudio.com/docs/agents/reference/agent-plugin-reference)
+- GitHub Copilot: [installation et gestion des marketplace](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing), [créer une marketplace et l'installer](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace) (format identique à Claude Code), [créer un plugin (format agent plugin)](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating) 
 
 ## Interfaces de publication de plugins
 

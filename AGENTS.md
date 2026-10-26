@@ -57,7 +57,14 @@ Claude respects the Agent Skill format standard, but uses its own structure for 
 ## OpenAI
 
 As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
+
 It also states "Use only letters, numbers, underscores, or hyphens, starting with a letter or number." : this might imply removing `$schema` field, unless it's `com.openai` that is problematic? Not sure yet.
+
+## GitHub Copilot
+
+GitHub Copilot reuses the Claude Code marketplace location ([according to this doc](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)).
+
+
 
 ## Project management scripts
 
