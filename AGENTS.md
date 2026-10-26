@@ -30,16 +30,29 @@ This repository is a bundle of Claude and Agent Plugin packages, not a tradition
 
 Do not confuse internal skills with published ones: a skill for creating skills or maintenance instructions is internal and belongs in `.agents/skills/`. A learning skill intended for learners belongs in `plugins/<plugin-name>/skills/` and will be included in the plugin.
 
-## Conventions
+## Conventions for structuring skills files
 
 - Keep user-facing learning content in the plugin `skills/` folder.
 - Keep development skills in `.agents/skills/`; general instructions for the repository root belong in `AGENTS.md`.
-- Prefer targeted skills, each representing a concrete use case.
 - For a published skill, follow the expected format: frontmatter `name` and `description` in `SKILL.md`, in the language of the training support.
+- Put references in the `references/` folder.
 - When a published skill is added or removed, update the README.
-- Consult the current source documentation rather than reproducing outdated APIs or guarantees from older examples.
-- Do not add generic server code or infrastructure unless the training content requires it.
 - Keep helper scripts minimal, without hidden dependencies, and directly tied to the use case.
+
+## Skill content conventions (for skills in the plugins)
+
+- Write in French (important!)
+- The user is designated as "l'apprenant" or "l'utilisateur" and never "l'étudiant".
+- These plugins are about teaching and not automating programming of agentic AI apps: skills shoud include references to the doc, explanations, ouverture on how to keep progressing, examples, use case ideas.
+- Prefer targeted skills, each representing a concrete use case. Favour using multiple small skills together rather than big skills.
+- Keep every useful link (official documentation, LBKE guides and resources, templates) in a `references/` file inside the skill, and point to that file from `SKILL.md` rather than scattering URLs in the body.
+- When a skill is modified (renamed, moved, or its content/scope changed), search the repository for its name to find every place it is referenced (README, other skills, manifests, `data/`, scripts) and check that each mention is still accurate after the change.
+- Consult the current source documentation rather than reproducing outdated APIs or guarantees from older examples. Add current docs as reference if they are official : coming from LangChain docs, LangChain website, or LBKE.
+- Do not add generic server code or infrastructure unless the training content requires it.
+
+## Claude
+
+Claude respects the Agent Skill format standard, but uses its own structure for "plugin.json". The Agent Plugins plugin.json is the source of truth for common fields, which are then replicated in Claude plugin.json through an helper script `sync_claude_plugin`.
 
 ## Project management scripts
 

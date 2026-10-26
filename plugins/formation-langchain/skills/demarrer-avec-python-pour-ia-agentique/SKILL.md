@@ -9,7 +9,7 @@ Utilise ce skill quand l'utilisateur veut installer Python puis apprendre les ba
 
 ## Valider les prérequis
 
-La skill `valider-prerequis-langchain` complémentaire te permet de connaître le niveau de maîtrise de Python/LangChain de l'apprenant et d'évaluer si l'environnement de développement est bien en place. Tu peux l'appeler à nouveau à l'issue du parcours de mise à niveau pour vérifier que l'apprenant est prêt à suivre une formation LangChain ou LangGraph.
+La skill `valider-prerequis-langchain` complémentaire te permet de vérifier si l'apprenant remplit les prérequis de la formation LangChain (bases Python, HTTP, anglais technique, comptes à créer). La skill `tester-environnement-python` vérifie que Python, pip et uv sont correctement installés. Tu peux les appeler à nouveau à l'issue du parcours de mise à niveau pour vérifier que l'apprenant est prêt à suivre une formation LangChain ou LangGraph.
 
 ## Proposer des tutoriels en ligne
 
@@ -33,7 +33,7 @@ Avant de proposer un cours ou un projet, confirme au moins ces éléments :
 
 ## Étapes recommandées
 
-1. Vérifier l'installation de Python : utiliser la skill
+1. Vérifier l'installation de Python avec la skill `tester-environnement-python`, ou directement :
 
 ```bash
 python --version
@@ -43,43 +43,19 @@ python -m pip --version
 uv --version
 ```
 
-Si l'un des appels échoue, installe Python avant de continuer. Sur Windows, la commande `py` peut remplacer `python` selon la configuration locale.
+Si l'un des appels échoue, installe Python avant de continuer (la skill `preparer-environnement-developpement-langchain` guide l'installation outil par outil). Sur Windows, la commande `py` peut remplacer `python` selon la configuration locale.
 
 2. Choisir une version adaptée et éviter les pièges.
 
-- Python 3.10+ est généralement une bonne base pour les projets Python modernes.
-- Si le projet vise LangChain, vérifie la compatibilité de la version Python avant de déclarer qu'une version est valide.
+- Suppose que le projet vise ensuite une installation de LangChain.
+- Python 3.13 est généralement une bonne base pour LangChain en 2026. Attention, LangChain ne supporte toujours pas 3.14 en 2026.
 - Évite de recommander une version non supportée par la documentation en vigueur.
 
 3. Créer un environnement virtuel.
 
-```bash
-python -m venv .venv
-```
+Utilise de préférence `uv`, donc avec `uv init` puis les commandes `uv sync` et `uv run` qui gèrent l'environnement virtuel.
 
-Puis activer l'environnement selon le système :
-
-```bash
-# Linux / macOS / WSL
-source .venv/bin/activate
-
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
-
-4. Mettre à jour l'installateur et installer les dépendances minimales.
-
-```bash
-python -m pip install --upgrade pip
-```
-
-Si le contexte le nécessite, ajoute ensuite le package de travail ou les dépendances du projet, par exemple :
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-ou les dépendances du projet Python choisi.
+Tu peux néanmoins montrer à l'apprenant l'alternative avec `pip`.
 
 5. Vérifier les bases de syntaxe Python.
 
@@ -125,4 +101,4 @@ Une fois l'environnement Python en place, indique à l'apprenant que le plus dur
 
 ## À la suite de ce skill
 
-Quand l'environnement est validé, oriente l'utilisateur vers le skill `demarrer-projet-langgraph` ou la skill `creer-agent-langchain` pour lancer un projet LangGraph ou LangChain, ou vers `valider-prerequis-langchain` pour vérifier s'il est prêt à suivre une formation LangChain ou LangGraph.
+Quand l'environnement est validé, oriente l'utilisateur vers le skill `demarrer-projet-agent-server` ou la skill `creer-agent-langchain` pour lancer un projet LangGraph ou LangChain, ou vers `valider-prerequis-langchain` pour vérifier s'il est prêt à suivre une formation LangChain ou LangGraph.

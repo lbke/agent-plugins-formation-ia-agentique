@@ -1,135 +1,116 @@
 ---
 name: valider-prerequis-langchain
-description: Vérifier rapidement si un apprenant a bien les bases Python, terminal, environnement et logique de programmation nécessaires pour suivre une formation LangChain ou LangGraph sans perdre du temps en cours.
+description: Vérifier si un apprenant remplit les prérequis officiels de la formation LangChain de LBKE (bases Python, HTTP, anglais technique, comptes Google Colab, GitHub et Render.com) avant de s'inscrire ou de commencer le cours.
 ---
 
-# Valider ses prérequis pour une formation LangChain
+# Valider ses prérequis pour la formation LangChain
 
-Utilise ce skill quand un apprenant ou une apprenante souhaite savoir s'il est prêt pour une formation LangChain, LangGraph ou IA agentique, ou quand il demande si ses compétences actuelles sont suffisantes avant de commencer.
-Si l'apprenant ne semble pas avoir les prérequis, mobilise la skill "demarrer-avec-python-pour-ia-agentique" pour l'aider à se mettre à se mettre à niveau.
+Utilise ce skill quand un apprenant ou une apprenante souhaite savoir s'il est prêt pour la formation « LangChain - agents IA en Python » de LBKE, ou plus généralement pour une formation LangChain, LangGraph ou IA agentique, ou quand il demande si ses compétences actuelles sont suffisantes avant de commencer.
+
+Les prérequis de référence sont ceux de la page officielle de la formation, résumés dans `references/formation-langchain.md`. Cette page fait foi : si tu as accès au web, consulte-la pour vérifier que la liste n'a pas évolué.
 
 ## Objectif
 
-Évaluer précisément le niveau de préparation technique sans entrer dans le détail organisationnel d'un programme de formation LangChain. On ne vérifie pas la date, le calendrier ou les modalités de certification ; on se concentre sur les compétences concrètes nécessaires pour comprendre et pratiquer les cours.
+Évaluer le niveau de préparation de l'apprenant par rapport aux prérequis annoncés, sans entrer dans le détail organisationnel (dates, tarifs, modalités de certification). On se concentre sur les compétences et les comptes concrètement nécessaires pour suivre les cours et pratiquer.
 
-## Checklist de validation
+Ce skill évalue le niveau ; il ne vérifie pas en détail l'installation de Python. Pour ce point, mobilise la skill `tester-environnement-python`.
 
-Utilise la skill `demarrer-avec-python-pour-ia-agentique` pour vérifier l'installation correcte de Python et des outils de développement.
+## Public visé
 
-## Validation pratique
+La formation s'adresse aux développeurs Python de niveau intermédiaire à avancé. Aucune connaissance préalable en science des données ou sur les LLM n'est nécessaire : les points essentiels sont abordés en formation. Ce n'est pas une formation à l'utilisation d'assistants IA pour programmer.
 
-### 1. Vérifier l'environnement
+Si l'apprenant n'est pas développeur ou découvre Python, il n'est pas dans la cible : oriente-le vers `demarrer-avec-python-pour-ia-agentique` pour une mise à niveau avant de reconsidérer l'inscription.
 
-```bash
-python --version
-python -m pip --version
-git --version
-# Non obligatoire mais recommandé : installer uv
-uv --version
-```
+## Checklist des prérequis
 
-Si l'un de ces commandes échoue, l'apprenant n'est pas encore prêt à suivre des exercices de façon fluide.
+Passe en revue chaque point avec l'apprenant. Pose des questions concrètes plutôt que de demander « sais-tu faire X ? ».
 
-### 2. Vérifier les bases Python
+### 1. Bases de la communication client/serveur en HTTP
 
-Demande-lui d'exécuter un mini script type :
+L'apprenant doit pouvoir expliquer simplement :
+
+- ce qu'est une requête et une réponse HTTP ;
+- la différence entre un client (navigateur, script) et un serveur ;
+- ce qu'est une API web et une clé d'API.
+
+Question type : « Si ton script Python appelle une API, que se passe-t-il concrètement entre ta machine et le serveur ? »
+
+### 2. Bases du développement d'applications en Python
+
+L'apprenant doit savoir :
+
+- écrire une fonction, une boucle et une condition ;
+- installer une librairie et l'importer dans son code ;
+- exécuter un script depuis le terminal ;
+- créer et utiliser un environnement virtuel.
+
+Pour vérifier les bases du langage, demande-lui d'écrire ou de lire un mini script :
 
 ```python
 items = ["A", "B", "C"]
 
-for item in items:
-    if item == "B":
-        print("Trouvé")
-    else:
-        print(item)
+def trouver(items, cible):
+    for item in items:
+        if item == cible:
+            return True
+    return False
 
-def ajouter(x, y):
-    return x + y
-
-print(ajouter(2, 3))
+print(trouver(items, "B"))
 ```
 
-Le script doit s'exécuter sans erreur et afficher une sortie cohérente.
+Il doit pouvoir expliquer ce que fait le code et prédire la sortie.
 
-### 3. Vérifier l'usage du terminal
+Pour vérifier l'installation de Python, pip et uv, et la capacité à créer un environnement virtuel, utilise la skill `tester-environnement-python`.
 
-```bash
-mkdir -p /tmp/langchain-check && cd /tmp/langchain-check
-python -m venv .venv
-source .venv/bin/activate
-python -c "print('environnement actif')"
-```
+### 3. Anglais technique
 
-Si l'apprenant ne maîtrise pas au moins cette logique minimale, il a besoin d'un complément avant de démarrer la formation.
+L'apprenant doit pouvoir lire une documentation technique en anglais (la documentation de LangChain et LangGraph n'est disponible qu'en anglais). Une compréhension écrite suffisante est requise ; l'oral n'est pas nécessaire.
 
-### 4. Vérifier les compétences utiles pour LangChain
+Test rapide : propose un court extrait de la documentation LangChain et demande-lui de le reformuler en français.
 
-Une formation LangChain peut être suivie avec un bon niveau général en code, mais l'apprenant doit surtout savoir :
+### 4. Comptes gratuits à créer
 
-- créer un environnement virtuel ;
-- installer des dépendances via `pip` ou `uv` ;
-- lire une erreur Python et distinguer les problèmes de syntaxe, d'import et d'environnement ;
-- exécuter un script localement ;
-- modifier un fichier de code de façon simple et relancer l'application.
+L'apprenant doit posséder, avant la formation, des comptes gratuits sur :
 
-### 5. Vérifie les notions de base
+- Google Colab (notebooks dans le cloud) ;
+- GitHub (dépôts de code) ;
+- Render.com (déploiement).
 
-L'apprenant doit :
+Vérifie qu'il peut se connecter à chacun. Une clé d'accès LLM avec un forfait limité est fournie par LBKE pendant la formation : l'apprenant n'a pas besoin d'acheter de crédits chez un fournisseur de modèles.
 
-- Avoir une idée générale du fonctionnement d'un serveur web HTTP ;
-- Comprendre les termes techniques comme script, compiler, déployer en production ;
-- Connaître les bases des plateformes IA générative grand public : ce qu'est un prompt, avoir déjà testé Mistral ou équivalent.
+### 5. Matériel
+
+Un ordinateur portable est requis, avec un accès Internet, un navigateur et la possibilité d'installer des outils (ou, à défaut, de travailler dans Google Colab).
 
 ## Interprétation du résultat
 
 ### Prêt à suivre la formation
 
-L'apprenant a :
-
-- Python fonctionnel ;
-- un environnement virtuel maîtrisé (avec pip ou uv) ;
-- les bases de syntaxe Python ;
-- le réflexe de lancer un script et lire les erreurs ;
-- des connaissances de base en informatique.
+Tous les points sont validés : bases HTTP, bases Python, anglais technique, comptes créés, ordinateur disponible. Oriente vers `demarrer-formation-langchain` ou `preparer-environnement-developpement-langchain`.
 
 ### Partiellement prêt
 
-L'apprenant est proche du niveau requis, mais a besoin de :
+L'apprenant a une expérience de développement mais un ou deux points manquent, par exemple :
 
-- un petit rappel sur les fonctions et boucles ;
-- une installation Python plus claire ;
-- une séance de mise à niveau sur le terminal ou les environnements virtuels.
+- il n'a jamais utilisé d'environnement virtuel ;
+- il n'a pas encore créé ses comptes ;
+- il n'a jamais appelé une API HTTP depuis du code.
 
-### Pas encore prêt pour le cours
+Propose une action ciblée pour chaque manque avant la formation (créer les comptes, suivre `tester-environnement-python`, lire une introduction aux API HTTP).
 
-Si l'apprenant ne sait pas :
+### Pas encore prêt
 
-- utiliser le terminal ;
-- lancer un script Python ;
-- créer un environnement virtuel ;
-- comprendre les erreurs de base ;
-
-alors il ou elle doit d'abord passer par le skill `demarrer-avec-python-pour-ia-agentique` avant de viser un projet LangChain.
-
-## Recommandation concrète
-
-Propose une progression simple :
-
-1. valider le niveau Python ;
-2. préparer l'environnement de travail ;
-3. lancer un projet simple ;
-4. ensuite démarrer un premier exercice LangChain ou LangGraph.
+L'apprenant n'a pas les bases de Python (fonctions, boucles, conditions) ou ne sait pas exécuter un script. Oriente vers `demarrer-avec-python-pour-ia-agentique` et propose de refaire cette validation à l'issue de la mise à niveau.
 
 ## Erreurs fréquentes
 
-- Le mauvais Python est utilisé : `python` ne pointe pas vers le bon interpréteur.
-- L'environnement virtuel est créé mais pas activé.
-- L'apprenant sait lire du code sans savoir l'exécuter.
-- Les dépendances sont installées au mauvais endroit ou dans le mauvais environnement.
-- On confond le support de version Python avec le support de la librairie.
+- Confondre « savoir lire du code » et « savoir l'exécuter » : l'apprenant doit avoir déjà lancé des scripts lui-même.
+- Supposer que des connaissances en LLM ou en data science sont nécessaires : ce n'est pas le cas.
+- Oublier les comptes à créer et perdre du temps le premier jour.
+- Penser que la formation enseigne les assistants IA pour le code : ce n'est pas son objet.
 
 ## À la suite de ce skill
 
-- Si l'apprenant est prêt : oriente vers `demarrer-projet-langgraph`.
-- S'il manque de base : oriente vers `demarrer-avec-python-pour-ia-agentique`.
-- S'il a besoin de configurer plus précisément son environnement : oriente vers `preparer-environnement-developpement-langchain`.
+- Si l'apprenant est prêt : oriente vers `demarrer-formation-langchain` ou `preparer-environnement-developpement-langchain`.
+- Pour vérifier l'installation de Python, pip et uv : `tester-environnement-python`.
+- S'il manque les bases Python : `demarrer-avec-python-pour-ia-agentique`.

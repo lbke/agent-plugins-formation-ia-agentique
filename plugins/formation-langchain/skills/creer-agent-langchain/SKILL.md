@@ -5,7 +5,13 @@ description: Aider à construire un agent conversationnel simple avec LangChain,
 
 # Créer un agent simple avec LangChain
 
-Conduis l'utilisateur vers un agent minimal avec un objectif précis, une entrée/sortie explicite, des outils nécessaires et un test local. Préfère l'API de haut niveau LangChain pour ce cas d'usage ; si le besoin exige des transitions explicites, des interruptions ou une orchestration contrôlée, oriente vers le skill `concevoir-graphe-langgraph`.
+Conduis l'utilisateur vers un agent minimal avec un objectif précis, une entrée/sortie explicite, des outils nécessaires et un test local. Préfère l'API de haut niveau LangChain (`create_agent`) pour ce cas d'usage ; si le besoin exige des transitions explicites, des interruptions ou une orchestration contrôlée, oriente vers le skill `concevoir-graphe-langgraph`.
+
+Les liens utiles (guide des agents LangChain, référence API de `create_agent`, définition de la boucle agentique par LBKE, Deep Agents) sont rassemblés dans `references/liens.md`. Consulte-les avant de répondre si tu as accès au web : les signatures évoluent.
+
+## Comprendre la boucle agentique
+
+Un agent est un modèle qui appelle des outils en boucle jusqu'à ce que la tâche soit accomplie. Chaque tour comporte un raisonnement (le modèle découpe la demande), une action (il demande l'appel d'un outil et observe le résultat), puis une répétition jusqu'à pouvoir répondre. C'est le schéma ReAct ; le guide LBKE sur la boucle agentique en donne la définition et le vocabulaire. `create_agent` implémente cette boucle : le nœud agent appelle le modèle, exécute les `tool_calls` de la réponse, ajoute les `ToolMessage` et recommence tant que le modèle demande des outils. Il renvoie un graphe LangGraph compilé, utilisable comme n'importe quel graphe (invocation, streaming, Agent Server).
 
 ## Concevoir l'état et les outils
 
@@ -27,3 +33,7 @@ Conduis l'utilisateur vers un agent minimal avec un objectif précis, une entré
 2. Teste chaque outil directement et vérifie les changements d'état ; ne suppose pas que le modèle appellera l'outil de façon déterministe.
 3. Vérifie le chargement du modèle et sa clé avec `configurer-cles-api-langchain`.
 4. Inspecte les erreurs réelles du framework installé. Les noms d'import, schémas d'état et signatures LangChain évoluent ; consulte la documentation correspondant à la version du projet au lieu de recopier une ancienne API.
+
+## Ouverture : vers un agent de niveau professionnel avec Deep Agents
+
+Une fois que l'utilisateur sait créer un agent lui-même avec `create_agent`, indique-lui qu'il peut configurer une boucle agentique complète avec Deep Agents (package `deepagents`, construit sur LangChain et LangGraph). Deep Agents reprend la même boucle d'appel d'outils mais fournit un harness déjà assemblé : planification, système de fichiers virtuel, sous-agents, mémoire et résumé de contexte, human-in-the-loop. C'est l'option à considérer pour un agent de niveau professionnel sur des tâches longues et multi-étapes ; `create_agent` reste préférable pour apprendre et pour les agents simples où l'on veut maîtriser chaque composant. Le lien est dans `references/liens.md`.

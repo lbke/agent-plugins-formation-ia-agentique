@@ -32,10 +32,10 @@ Identifie rapidement :
 
 ### Il veut commencer un projet
 
-- Utilise `demarrer-projet-langgraph` pour initialiser et lancer un projet.
+- Utilise `demarrer-projet-agent-server` pour initialiser et lancer un projet.
 - Utilise `creer-agent-langchain` pour construire un premier agent.
 - Utilise `concevoir-graphe-langgraph` quand il faut contrôler les étapes, l'état ou les transitions d'un workflow.
-- Utilise `deployer-agent-langgraph` lorsqu'il souhaite publier et héberger son projet.
+- Utilise `deployer-agent-server` lorsqu'il souhaite publier et héberger son projet.
 
 ### Il cherche une formation ou un accompagnement
 
