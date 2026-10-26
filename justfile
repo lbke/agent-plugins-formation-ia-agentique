@@ -41,6 +41,13 @@ update-marketplaces:
     python3 scripts/update_marketplaces.py
 
 
+# uv tool install git+https://github.com/NVIDIA/skillspector.git
+# /!\ Will use OPENAI_API_KEY, it ain't free
+audit-security:
+    uv run skillspector scan ./plugins
+
+
+
 # Package every plugin as a ZIP archive for direct installation or GitHub release assets.
 # Example: just zip-plugin
 zip:

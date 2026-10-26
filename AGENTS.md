@@ -72,3 +72,5 @@ Internal skills must not be copied into archives or plugin skill folders.
 Prefer orchestration in `just` (for example, running a loop across all plugins) and core Python functions for transformations (such as editing JSON).
 
 Doc: https://github.com/casey/just
+
+Use the scripts to audit the project : validate plugin file, run a security audit with SkillSpector...

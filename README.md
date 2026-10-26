@@ -28,6 +28,10 @@ Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de
 
 Les deux marketplaces référencent le plugin sous `plugins/`, ce qui permet d'en ajouter d'autres sans modifier leur structure.
 
+### Bonne pratique : menez un audit de sécurité
+
+Installer des skills depuis un dépôt GitHub n'est pas toujours recommandé : vous pouvez procéder vous-mêmes à une analyse de sécurité avec l'outil [SkillSpector](https://github.com/NVIDIA/SkillSpector) de NVidia.
+
 ## Données
 
 Le plugin ne contient aucun connecteur, n'envoie aucune donnée à un service externe et ne stocke pas de données. Les messages que vous adressez à Claude sont traités par Claude selon les conditions et paramètres de confidentialité applicables à votre compte.
