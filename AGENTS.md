@@ -64,6 +64,9 @@ It also states "Use only letters, numbers, underscores, or hyphens, starting wit
 
 GitHub Copilot reuses the Claude Code marketplace location ([according to this doc](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)).
 
+## Goose
+
+Does only support plugin install, not marketplace yet: https://goose-docs.ai/docs/guides/context-engineering/plugins
 
 
 ## Project management scripts

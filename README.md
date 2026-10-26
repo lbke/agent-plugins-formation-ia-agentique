@@ -11,9 +11,13 @@ Le fichier `AGENTS.md` explique le fonctionnement de la base de code, pour les h
 ## Installation du plugin
 
 
-### Via le fichier zip
+### Applications de bureau Claude, ChatGPT, Goose - installation via le fichier zip 
 
-Téléchargez la version zippée du plugin.
+Le projet respecte le standard Agent Plugins, les skills sont donc installables dans [tous les clients compatibles](https://agent-plugins.org/compatible-clients).
+
+Vous trouverez la dernière version zippée de l'application dans [l'onglet release du dépôt GitHub](https://github.com/lbke/agent-plugins-formation-ia-agentique/releases).
+
+Téléchargez la version zippée du plugin et installez-la dans votre plateforme IA favorite.
 
 ### Claude Code via les sources
 
@@ -23,13 +27,18 @@ Le dépôt fournit la marketplace Claude **Formations LBKE** dans `.claude-plugi
 
 Puis installez le plugin avec `claude plugin install formation-langchain@lbke-formations` ou `claude plugin install formation-ia-agentique@lbke-formations`. Pour charger directement le plugin LangChain pendant son développement, utilisez `just launch-claude` (ou `claude --plugin-dir plugins/formation-langchain`). Pour lancer l'autre plugin, utilisez `just launch-claude formation-ia-agentique`.
 
-### ChatGPT, VS Code (Agent Plugins) via les sources
+### ChatGPT, VS Code, Mistral Vibe (Agent Plugins) via les sources
 
-Les plugins `plugins/formation-langchain/` et `plugins/formation-ia-agentique/` contiennent chacun leurs manifestes Claude et Agent Plugins ainsi que leurs skills. Les marketplaces locales sont définies dans `.agents/plugins/marketplace.json` et `.claude-plugin/marketplace.json` ; régénérez leurs listes après l'ajout ou le retrait d'un plugin avec `just update-marketplaces`. Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation LangChain** et **Formation IA agentique**.
+Les plugins `plugins/formation-langchain/` et `plugins/formation-ia-agentique/` contiennent chacun leurs manifestes Agent Plugins ainsi que leurs skills. Une marketplace locale est définie `.agents/plugins/marketplace.json`.
+
 
 Ce plugin fournit des skills uniquement : il n'embarque pas de serveur MCP ni de connecteur. La marketplace locale permet de le tester ou de le distribuer dans un dépôt ; elle ne publie pas le plugin dans le répertoire public de ChatGPT.
 
 Les deux marketplaces référencent le plugin sous `plugins/`, ce qui permet d'en ajouter d'autres sans modifier leur structure.
+
+Dans l'application de bureau ChatGPT, ouvrez le dépôt comme projet local de confiance, puis redémarrez l'application pour faire apparaître la marketplace **Formations LBKE** dans le répertoire des plugins. Vous pourrez alors installer **Formation LangChain** et **Formation IA agentique**.
+
+Pour les autres outils, notamment ceux en ligne de commandes, consultez la documentation appropriée (exemple avec [l'agent open source goose](https://goose-docs.ai/docs/guides/context-engineering/plugins) ou [Mistral Vibe](https://docs.mistral.ai/vibe/code/cli/plugins)).
 
 ### GitHub Copilot - en ligne de commande
 
@@ -98,6 +107,7 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 - Claude : [documentation](https://code.claude.com/docs/en/plugins/overview), [reference plugin.json](https://code.claude.com/docs/en/plugins/manifest-reference)
 - VSCode : [documentation Agent Plugin](https://code.visualstudio.com/docs/agents/reference/agent-plugin-reference)
 - GitHub Copilot: [installation et gestion des marketplace](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing), [créer une marketplace et l'installer](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace) (format identique à Claude Code), [créer un plugin (format agent plugin)](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating) 
+- Goose : [Agent skills](https://goose-docs.ai/docs/guides/context-engineering/using-skills/), [plugins](https://goose-docs.ai/docs/guides/context-engineering/plugins), [abandon du support d'un registre spécifique](https://github.com/aaif-goose/goose/discussions/10830), [making goose marketplace install easier](https://github.com/aaif-goose/goose/issues/13150)
 
 ## Interfaces de publication de plugins
 
@@ -107,3 +117,4 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 ## Marketplaces de plugins
 
 - [Cursor marketplace](https://cursor.com/marketplace)
+- [Registre officiel MCP](https://github.com/modelcontextprotocol/registry)
