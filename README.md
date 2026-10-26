@@ -77,7 +77,7 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 ## Interfaces de publication de plugins
 
 - [Publication pour Claude](https://claude.ai/directory/manage)
-- [Publication pour OpenAI](https://platform.openai.com/plugins) (bouton "upload") et [Documentation pour OpenAI](https://developers.openai.com/plugins/deploy/submission)
+- [Publication pour OpenAI](https://platform.openai.com/plugins) (bouton "upload") et [Documentation pour OpenAI](https://developers.openai.com/plugins/deploy/submission), [guidelines des plugins](https://developers.openai.com/plugins/plugin-guidelines)
 
 ## Marketplaces de plugins
 

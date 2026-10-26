@@ -26,7 +26,8 @@
         "category": "Education & Research",
         "websiteURL": "https://www.lbke.fr/formations/",
         "privacyPolicyURL": "https://www.lbke.fr/cgv",
-        "termsOfServiceURL": "https://www.lbke.fr/cgv",
+        "termsOfServiceURL": "https://www.lbke.fr/cgv", 
+        "supportURL": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
         "defaultPrompt": [
           "Démarre ma formation LangChain et aide-moi à définir mon parcours.",
           "Aide-moi à démarrer un projet LangChain ou LangGraph.",

@@ -54,6 +54,11 @@ Do not confuse internal skills with published ones: a skill for creating skills 
 
 Claude respects the Agent Skill format standard, but uses its own structure for "plugin.json". The Agent Plugins plugin.json is the source of truth for common fields, which are then replicated in Claude plugin.json through an helper script `sync_claude_plugin`.
 
+## OpenAI
+
+As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
+It also states "Use only letters, numbers, underscores, or hyphens, starting with a letter or number." : this might imply removing `$schema` field, unless it's `com.openai` that is problematic? Not sure yet.
+
 ## Project management scripts
 
 The repository uses `just` as its task runner. It does not have a JavaScript/TypeScript build pipeline or a dedicated test suite; validation mainly concerns the plugins, content, and relevant scripts.
