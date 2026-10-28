@@ -1,5 +1,5 @@
 ---
-name: creer-skills-depuis-supports
+name: create-skill-based-on-documents
 description: Transform training materials into operational skills published in a plugin while following the repository's editorial and technical guidelines.
 ---
 

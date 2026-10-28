@@ -84,3 +84,15 @@ Prefer orchestration in `just` (for example, running a loop across all plugins) 
 Doc: https://github.com/casey/just
 
 Use the scripts to audit the project : validate plugin file, run a security audit with SkillSpector...
+
+## Skills over MCP
+
+Skills served directly from the MCP server is an extension of the MCP protocol.
+
+For now, we stick to defining skills as file structured in a plugin, and providing a separate MCP server. 
+
+The advantage is that the zip of skills can be exported easily without carrying a complete client/server architecture with MCP.
+
+References:
+- https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640
+- https://docs.skybridge.tech/guides/skills
