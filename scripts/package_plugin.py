@@ -18,10 +18,16 @@ def package_plugin(plugin_path: Path, output_path: Path) -> Path:
 
     with zipfile.ZipFile(output_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for file_path in sorted(plugin_path.rglob("*")):
+            # The glob already handle nested files, skip dirs
             if file_path.is_dir():
                 continue
+            # TODO: if this makes the script too slow we should remove this directory from the glob earlier
+            # rather than skipping from the loop
             if "__pycache__" in file_path.parts or file_path.suffix == ".pyc":
                 continue
+            # TODO: we may need to skip "evals" too when we introduce them later on,
+            # not sure if it makes sense to make them part of the plugin
+            # We may even need to use a whitelist of files rather than a blacklist (removing __pycache__ etc.)
             archive.write(file_path, arcname=str(
                 file_path.relative_to(plugin_path.parent)))
 
@@ -35,13 +41,11 @@ def main() -> None:
     parser.add_argument(
         "--plugin-path",
         type=Path,
-        default=Path("plugins/formation-langchain"),
         help="Path to the plugin directory to zip.",
     )
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("dist/formation-langchain.zip"),
         help="Where to write the ZIP archive.",
     )
     args = parser.parse_args()
