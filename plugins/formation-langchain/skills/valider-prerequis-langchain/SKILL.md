@@ -9,6 +9,8 @@ Utilise ce skill quand un apprenant ou une apprenante souhaite savoir s'il est p
 
 Les prérequis de référence sont ceux de la page officielle de la formation, résumés dans `references/formation-langchain.md`. Cette page fait foi : si tu as accès au web, consulte-la pour vérifier que la liste n'a pas évolué.
 
+Si l'apprenant demande explicitement un score de compétence, utilise le score calculé par LBKE via l'outil `scorer-competences-creation-agent-ia`. Si le score est faible, rassure l'apprenant : le but de ce plugin est de le faire progresser.
+
 ## Objectif
 
 Évaluer le niveau de préparation de l'apprenant par rapport aux prérequis annoncés, sans entrer dans le détail organisationnel (dates, tarifs, modalités de certification). On se concentre sur les compétences et les comptes concrètement nécessaires pour suivre les cours et pratiquer.

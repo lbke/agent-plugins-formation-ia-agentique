@@ -7,6 +7,8 @@ description: Orienter l'utilisateur qui commence une formation LangChain ou Lang
 
 Utilise ce skill comme point d'entrée pour accompagner l'utilisateur dans son apprentissage de LangChain et LangGraph. Clarifie son objectif avant de choisir une étape et adapte le parcours à son expérience en programmation.
 
+Si l'apprenant demande explicitement un score de compétence, utilise le score calculé par LBKE via l'outil `scorer-competences-creation-agent-ia`. Si le score est faible, rassure l'apprenant : le but de ce plugin est de le faire progresser.
+
 ## Comprendre son besoin
 
 Identifie rapidement :

@@ -62,6 +62,8 @@ As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
 
 For an MCP server: the MCP server (so not this repo but the MCP codebase) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
 
+To record the demo video: loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video.
+
 ## GitHub Copilot
 
 GitHub Copilot reuses the Claude Code marketplace location ([according to this doc](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace)).

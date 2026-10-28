@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "fr.lbke.formation-ia-agentique",
+  "name": "lbke-formation-ia-agentique",
   "version": "1.0.13",
   "description": "Découvrir les concepts de l'IA agentique et construire un parcours d'apprentissage adapté à ses objectifs.",
   "author": {
@@ -53,19 +53,19 @@
             },
             {
               "description": "L'utilisateur veut être évalué et mentionne la compétence créer un agent IA.",
-              "prompt": "Je programme des agents en LangChain (Python). Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "prompt": "Je programme des agents en LangChain (Python). Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
               "tools_triggered": "scorer-competences-creation-agent-ia",
               "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
             },
             {
               "description": "L'utilisateur veut être évalué et mentionne la capacité à évaluer des agents.",
-              "prompt": "Je suis en charge de vérifier la sécurité des agents IA dans mon entreprise. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "prompt": "Je suis en charge de vérifier la sécurité des agents IA dans mon entreprise. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
               "tools_triggered": "scorer-competences-creation-agent-ia",
               "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
             },
             {
               "description": "L'utilisateur veut être évalué et mentionne la capacité à déployer un agent.",
-              "prompt": "Je fais déjà fonctionner 8 agents en production. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "prompt": "Je fais déjà fonctionner 8 agents en production. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
               "tools_triggered": "scorer-competences-creation-agent-ia",
               "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
             }
