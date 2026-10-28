@@ -38,6 +38,7 @@
         "release_notes": "Parcours centré sur LangChain et LangGraph"
       },
       "review": {
+        "demo_recording_url": "https://agent-plugins-mcp-server.lbke.fr/videos/video-plugin-formation-langchain.mp4",
         "test_cases": {
           "positive": [
             {
