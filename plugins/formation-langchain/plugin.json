@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "fr.lbke.formation-langchain",
+  "name": "lbke-formation-langchain",
   "version": "1.0.13",
   "description": "Apprendre à concevoir des applications et des agents avec LangChain et LangGraph grâce à des explications progressives et des exercices guidés.",
   "author": {

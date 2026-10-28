@@ -58,7 +58,9 @@ Claude respects the Agent Skill format standard, but uses its own structure for 
 
 As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
 
-It also states "Use only letters, numbers, underscores, or hyphens, starting with a letter or number." : this might imply removing `$schema` field, unless it's `com.openai` that is problematic? Not sure yet.
+"Use only letters, numbers, underscores, or hyphens, starting with a letter or number.": this is in regards to the plugin name, it can't be "fr.lbke.plugin-name" for OpenAI (though Agent Plugins standard accepts it) as dots are forbidden.
+
+For an MCP server: the MCP server (so not this repo but the MCP codebase) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
 
 ## GitHub Copilot
 
@@ -67,7 +69,6 @@ GitHub Copilot reuses the Claude Code marketplace location ([according to this d
 ## Goose
 
 Does only support plugin install, not marketplace yet: https://goose-docs.ai/docs/guides/context-engineering/plugins
-
 
 ## Project management scripts
 
@@ -89,10 +90,11 @@ Use the scripts to audit the project : validate plugin file, run a security audi
 
 Skills served directly from the MCP server is an extension of the MCP protocol.
 
-For now, we stick to defining skills as file structured in a plugin, and providing a separate MCP server. 
+For now, we stick to defining skills as file structured in a plugin, and providing a separate MCP server.
 
 The advantage is that the zip of skills can be exported easily without carrying a complete client/server architecture with MCP.
 
 References:
+
 - https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640
 - https://docs.skybridge.tech/guides/skills
