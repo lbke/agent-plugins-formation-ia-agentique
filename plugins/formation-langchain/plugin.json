@@ -10,12 +10,7 @@
   "homepage": "https://www.lbke.fr/formations/",
   "repository": "https://github.com/lbke/agent-plugins-formation-ia-agentique",
   "license": "MIT",
-  "keywords": [
-    "formation",
-    "LangChain",
-    "LangGraph",
-    "agents IA"
-  ],
+  "keywords": ["formation", "LangChain", "LangGraph", "agents IA"],
   "extensions": {
     "com.openai": {
       "interface": {
@@ -26,7 +21,7 @@
         "category": "Education & Research",
         "websiteURL": "https://www.lbke.fr/formations/",
         "privacyPolicyURL": "https://www.lbke.fr/cgv",
-        "termsOfServiceURL": "https://www.lbke.fr/cgv", 
+        "termsOfServiceURL": "https://www.lbke.fr/cgv",
         "supportURL": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
         "defaultPrompt": [
           "Démarre ma formation LangChain et aide-moi à définir mon parcours.",
@@ -39,12 +34,58 @@
       },
       "onboardingSkill": "./skills/demarrer-formation-langchain/SKILL.md",
       "publication": {
-        "countries": [
-          "FR",
-          "BE",
-          "CH"
-        ],
+        "countries": ["FR", "BE", "CH"],
         "release_notes": "Parcours centré sur LangChain et LangGraph"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "L'utilisateur veut être évalué et mentionne la compétence identifier les cas d'usage.",
+              "prompt": "Je connais les cas d'usage des agents IA. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "tools_triggered": "scorer-competences-creation-agent-ia",
+              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+            },
+            {
+              "description": "L'utilisateur veut être évalué et mentionne la compétence concevoir un agent IA.",
+              "prompt": "Je sais concevoir une automatisation fondée sur un agent IA. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "tools_triggered": "scorer-competences-creation-agent-ia",
+              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+            },
+            {
+              "description": "L'utilisateur veut être évalué et mentionne la compétence créer un agent IA.",
+              "prompt": "Je programme des agents en LangChain (Python). Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "tools_triggered": "scorer-competences-creation-agent-ia",
+              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+            },
+            {
+              "description": "L'utilisateur veut être évalué et mentionne la capacité à évaluer des agents.",
+              "prompt": "Je suis en charge de vérifier la sécurité des agents IA dans mon entreprise. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "tools_triggered": "scorer-competences-creation-agent-ia",
+              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+            },
+            {
+              "description": "L'utilisateur veut être évalué et mentionne la capacité à déployer un agent.",
+              "prompt": "Je fais déjà fonctionner 8 agents en production. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
+              "tools_triggered": "scorer-competences-creation-agent-ia",
+              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Évaluation demandée mais compétences inconnues",
+              "prompt": "Donne-moi mon score de compétence en création d'agents IA."
+            },
+            {
+              "description": "Évaluation sur un autre sujet",
+              "prompt": "Donne moi mon score de compétences en conception d'interfaces HTML"
+            },
+            {
+              "description": "Pas de demande de score",
+              "prompt": "Je suis très bon en création d'agents IA"
+            }
+          ]
+        }
       }
     }
   }
