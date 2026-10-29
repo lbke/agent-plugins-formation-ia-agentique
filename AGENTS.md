@@ -62,7 +62,11 @@ As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
 
 For an MCP server: the MCP server (so not this repo but the MCP codebase) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
 
-To record the demo video: loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video. We hosted a quick demo in the MCP server directly, but using any kind of static file host should work (domain doesn't have to be the official company domain).
+NOTE: some build system may alter the final path and add a prefix, this will mess up the `.well-known` discovery. See this issue regarding to how Skybridge handles the public folder: https://github.com/alpic-ai/skybridge/issues/1142
+
+To record the demo video: loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video. 
+We hosted a quick demo in the MCP server directly using [Skybridge /public folder](https://docs.skybridge.tech/guides/assets-and-styling) (final URL will be `/assets/<file-path>). 
+But using any kind of static file host should work (domain doesn't have to be the official company domain).
 
 ## GitHub Copilot
 
