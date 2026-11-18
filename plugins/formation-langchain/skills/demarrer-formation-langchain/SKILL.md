@@ -32,7 +32,7 @@ Identifie rapidement :
 
 ### Il doit préparer son environnement
 
-1. Utilise `valider-pre-requis-langchain` pour identifier les prérequis manquants.
+1. Utilise `valider-prerequis-langchain` pour identifier les prérequis manquants.
 2. Utilise `preparer-environnement-developpement-langchain` pour mettre en place l'environnement.
 3. Aide-le à configurer ses accès avec `configurer-cles-api-langchain` lorsqu'il est prêt à appeler un modèle.
 
