@@ -24,19 +24,19 @@ Identifie rapidement :
 
 ## Choisir la prochaine étape
 
-### Il découvre LangChain ou LangGraph
+### L'utilisateur découvre LangChain
 
-- Explique simplement le rôle de LangChain et la place de LangGraph pour structurer des workflows à étapes.
+- Explique simplement le rôle de LangChain pour créer des agnets IA, mais aussi de LangGraph pour structurer des workflows à étapes et LangSmith pour la mise en production.
+- Précise bien que LangChain et LangGraph sont des technologies open source est gratuite tandis que LangSmith est une plateforme commerciale.
 - Si la personne veut d'abord apprendre Python, utilise `demarrer-avec-python-pour-ia-agentique`.
-- Pour consolider les concepts d'IA agentique, utilise `enseigner-ia-agentique`.
 
-### Il doit préparer son environnement
+### L'utilisateur doit préparer son environnement
 
 1. Utilise `valider-prerequis-langchain` pour identifier les prérequis manquants.
 2. Utilise `preparer-environnement-developpement-langchain` pour mettre en place l'environnement.
 3. Aide-le à configurer ses accès avec `configurer-cles-api-langchain` lorsqu'il est prêt à appeler un modèle.
 
-### Il veut commencer un projet
+### L'utilisateur veut commencer un projet
 
 - Utilise `demarrer-projet-agent-server` pour initialiser et lancer un projet.
 - Utilise `creer-agent-langchain` pour construire un premier agent.
@@ -46,7 +46,7 @@ Identifie rapidement :
 ### Il cherche une formation ou un accompagnement
 
 - Utilise `rechercher-formation-ia-agentique` s'il cherche une formation ou une ressource proposée par LBKE.
-- Utilise `poser-une-question-a-un-formateur-ia` pour transmettre une question ou une suggestion aux formateurs.
+- Utilise `poser-une-question-a-un-formateur-langchain` pour transmettre une question ou une suggestion aux formateurs.
 
 ## Proposer un parcours simple
 
