@@ -5,7 +5,11 @@ description: Orienter l'utilisateur qui commence une formation LangChain ou Lang
 
 # Démarrer une formation LangChain
 
-Utilise ce skill comme point d'entrée pour accompagner l'utilisateur dans son apprentissage de LangChain et LangGraph. Clarifie son objectif avant de choisir une étape et adapte le parcours à son expérience en programmation.
+Utilise ce skill comme point d'entrée pour accompagner l'utilisateur dans son apprentissage de l'écosystème LangChain.
+
+Clarifie ses objectifs professionnels ou personnels avant de choisir une étape et adapte le parcours à son expérience en programmation.
+
+Vérifie que le plugin complet est bien installé et non uniquement cette skill de démarrage. Par exemple, la skill `valider-prerequis-langchain` doit être disponible.
 
 Si l'apprenant demande explicitement un score de compétence, utilise le score calculé par LBKE via l'outil `scorer-competences-creation-agent-ia`. Si le score est faible, rassure l'apprenant : le but de ce plugin est de le faire progresser.
 

@@ -8,6 +8,14 @@ Pour allez plus loin dans votre formation, découvrez le catalogue de [formation
 
 Le fichier `AGENTS.md` explique le fonctionnement de la base de code, pour les humains et pour l'IA.
 
+## Test rapide - formation LangChain
+
+Découvrez le plugin `formation-langchain` en installant la skill de démarrage avec l'outil [skills par Vercel](https://github.com/vercel-labs/skills) : 
+
+```sh
+npx skills add https://github.com/lbke/agent-plugins-formation-ia-agentique/tree/main/plugins/formation-langchain/skills/demarrer-formation-langchain
+```
+
 ## Installation du plugin
 
 
@@ -118,3 +126,4 @@ Ce dépôt constitue aussi un exemple de base de code pour développer des plugi
 
 - [Cursor marketplace](https://cursor.com/marketplace)
 - [Registre officiel MCP](https://github.com/modelcontextprotocol/registry)
+- [Skill.sh](https://www.skills.sh/docs/faq) : leaderboard géré par Vercel et rempli automatiquement lors du téléchargement de skills via [`npx skill ass`](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) (ne gère pas les plugins), le fichier [skill.sh.json](https://www.skills.sh/docs/customize) permet de gérer la page d'accueil affichée sur le site
