@@ -15,7 +15,7 @@
     "com.openai": {
       "interface": {
         "displayName": "Formation LangChain LBKE",
-        "shortDescription": "Apprenez LangChain en Python avec l'organisme de formation LBKE.",
+        "shortDescription": "Apprendre LangChain en Python",
         "longDescription": "Une formation guidée pour apprendre à créer des applications et des agents IA avec LangChain (et LangGraph), de l'environnement de développement au déploiement. Par LBKE, organisme de formation spécialisé en IA agentique.",
         "developerName": "LBKE",
         "category": "Education & Research",

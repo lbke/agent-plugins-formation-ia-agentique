@@ -1,7 +1,7 @@
 """Learning-path recommendations, mirroring the plugin's skills content.
 
 Source of truth: plugins/formation-ia-agentique/skills/enseigner-ia-agentique/references/technologies.md
-and skills/rechercher-formation-ia-agentique/SKILL.md. Keep both in sync when one changes.
+and plugins/formation-ia-agentique/skills/rechercher-formation-ia-agentique/SKILL.md. Keep both in sync when one changes.
 """
 
 from typing import Literal

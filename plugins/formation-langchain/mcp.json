@@ -3,7 +3,7 @@
     "mcpServers": {
         "remote-tools": {
             "type": "streamable-http",
-            "url": "https://agent-plugins-mcp-server.lbke.fr/mcp"
+            "url": "https://agent-plugins-formation-langchain-mcp.lbke.fr/mcp"
         }
     }
 }

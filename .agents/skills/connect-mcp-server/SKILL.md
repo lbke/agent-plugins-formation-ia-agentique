@@ -25,7 +25,9 @@ Tool names in `server.py` must match the `tools_triggered` values of the review 
 
 ## Plugin.json in this repo
 
-Must contain review + demo_url
+Must contain review + demo_url (`review.demo_recording_url`).
+
+The demo video can be hosted on any public static host, for instance a [Cloudflare R2 public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/). See the OpenAI section of `AGENTS.md` for how to record it.
 
 https://developers.openai.com/plugins/deploy/submission?utm_source=chatgpt.com#configure-onboarding-review-and-publication
 
@@ -40,4 +42,4 @@ https://agent-plugins.org/plugin-authors/mcp-servers
 
 https://developers.openai.com/plugins/plugin-guidelines#mcp-requirements
 
-The domain verification file `/.well-known/openai-apps-challenge` is served by each FastMCP server from the `OPENAI_APPS_CHALLENGE` environment variable of its Vercel project.
+The domain verification file `/.well-known/openai-apps-challenge` lives in `mcp-servers/<plugin-name>/public/.well-known/openai-apps-challenge`: Vercel serves `public/` at the domain root (Content-Type set in `vercel.json`), and a FastMCP route serves the same file outside Vercel.

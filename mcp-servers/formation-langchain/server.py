@@ -1,10 +1,10 @@
-"""MCP server for the `formation-ia-agentique` plugin.
+"""MCP server for the `formation-langchain` plugin.
 
-Tool names are referenced by `plugins/formation-ia-agentique/plugin.json`
+Tool names are referenced by `plugins/formation-langchain/plugin.json`
 (review test cases, `tools_triggered`): keep them in sync.
 """
 
-import os
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastmcp import FastMCP
@@ -24,7 +24,7 @@ from referentiel import (
     calculer_scores,
 )
 
-NOM_SERVEUR = "lbke-formation-ia-agentique"
+NOM_SERVEUR = "lbke-formation-langchain"
 
 # Every tool is a pure computation on static content: no side effect, no external call.
 # https://developers.openai.com/plugins/plugin-guidelines#mcp-requirements
@@ -37,7 +37,7 @@ mcp = FastMCP(
     version="0.1.0",
     website_url="https://www.lbke.fr/formations/",
     instructions=(
-        "Outils de la formation IA agentique de LBKE. Pour évaluer l'apprenant, consulte d'abord le "
+        "Outils de la formation LangChain de LBKE. Pour évaluer l'apprenant, consulte d'abord le "
         "référentiel avec `lister-criteres-competences-creation-agent-ia`, pose-lui des questions sur "
         "ses réalisations, puis calcule le score avec `scorer-competences-creation-agent-ia`. "
         "Pour l'orienter vers une technologie et une formation, utilise `recommander-parcours-ia-agentique`."
@@ -148,15 +148,15 @@ async def accueil(request: Request) -> Response:
     )
 
 
+# The OpenAI domain verification file lives in `public/.well-known/` (value from the OpenAI interface).
+# On Vercel, `public/` is served by the CDN at the domain root, before the function, with the
+# Content-Type set in `vercel.json` (the file has no extension). This route serves the same file
+# when the app runs elsewhere (local uvicorn, Docker...).
+OPENAI_APPS_CHALLENGE = Path(__file__).parent / "public" / ".well-known" / "openai-apps-challenge"
+
+
 @mcp.custom_route("/.well-known/openai-apps-challenge", methods=["GET"])
 async def openai_apps_challenge(request: Request) -> Response:
-    """Domain verification for OpenAI app submission.
-
-    The value is provided by the OpenAI interface; set it as the `OPENAI_APPS_CHALLENGE`
-    environment variable of the Vercel project. Served from code (not `public/`) so that the
-    file is plain text at the domain root, whatever the build output layout.
-    """
-    valeur = os.environ.get("OPENAI_APPS_CHALLENGE")
-    if not valeur:
+    if not OPENAI_APPS_CHALLENGE.is_file():
         return PlainTextResponse("Not found", status_code=404)
-    return PlainTextResponse(valeur)
+    return PlainTextResponse(OPENAI_APPS_CHALLENGE.read_text().strip())

@@ -4,7 +4,7 @@ from starlette.testclient import TestClient
 
 from app import app
 from referentiel import TOUS_LES_CRITERES
-from server import mcp
+from server import OPENAI_APPS_CHALLENGE, mcp
 
 TOUS = [c.champ for c in TOUS_LES_CRITERES]
 
@@ -59,10 +59,11 @@ async def test_recommandation(client):
     assert res.structured_content["plugin_suivant"] == "formation-langchain"
 
 
-def test_http_app(monkeypatch):
-    monkeypatch.setenv("OPENAI_APPS_CHALLENGE", "abc123")
+def test_http_app():
+    attendu = OPENAI_APPS_CHALLENGE.read_text().strip()
+    assert attendu
     with TestClient(app) as http:
         assert http.get("/").status_code == 200
         r = http.get("/.well-known/openai-apps-challenge")
-        assert r.text == "abc123"
+        assert r.text == attendu
         assert r.headers["content-type"].startswith("text/plain")

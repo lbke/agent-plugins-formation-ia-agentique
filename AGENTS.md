@@ -61,13 +61,15 @@ As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
 
 "Use only letters, numbers, underscores, or hyphens, starting with a letter or number.": this is in regards to the plugin name, it can't be "fr.lbke.plugin-name" for OpenAI (though Agent Plugins standard accepts it) as dots are forbidden.
 
-For an MCP server: the MCP servers now live in `mcp-servers/` (FastMCP). They serve `/.well-known/openai-apps-challenge` from the `OPENAI_APPS_CHALLENGE` env var. The legacy Skybridge server (separate repository) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
+For an MCP server: the MCP servers now live in `mcp-servers/` (FastMCP). Each server should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface. Vercel serves `public/` at the domain root, `vercel.json` sets its `text/plain` Content-Type, and a FastMCP route serves the same file outside Vercel. The legacy Skybridge server (separate repository) used the same file.
 
 NOTE: some build system may alter the final path and add a prefix, this will mess up the `.well-known` discovery. See this issue regarding to how Skybridge handles the public folder: https://github.com/alpic-ai/skybridge/issues/1142
 
 To record the demo video: loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video. 
 We hosted a quick demo in the MCP server directly using [Skybridge /public folder](https://docs.skybridge.tech/guides/assets-and-styling) (final URL will be `/assets/<file-path>). 
 But using any kind of static file host should work (domain doesn't have to be the official company domain).
+
+Recommended for new videos: a [Cloudflare R2 public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/) (public development URL `r2.dev` or a custom domain). This keeps large video files out of git and out of the Vercel bundle of the FastMCP servers. Put the public video URL in `extensions.com.openai.review.demo_recording_url` of the plugin's `plugin.json`.
 
 ## GitHub Copilot
 

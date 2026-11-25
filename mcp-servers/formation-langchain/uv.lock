@@ -583,7 +583,7 @@ wheels = [
 ]
 
 [[package]]
-name = "mcp-formation-ia-agentique"
+name = "mcp-formation-langchain"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

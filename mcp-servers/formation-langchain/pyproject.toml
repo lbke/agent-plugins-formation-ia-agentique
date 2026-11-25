@@ -1,7 +1,7 @@
 [project]
-name = "mcp-formation-ia-agentique"
+name = "mcp-formation-langchain"
 version = "0.1.0"
-description = "Serveur MCP du plugin formation-ia-agentique (LBKE)"
+description = "Serveur MCP du plugin formation-langchain (LBKE)"
 requires-python = ">=3.12"
 dependencies = [
     "fastmcp>=4.2.6",
@@ -13,7 +13,7 @@ dev = [
     "pytest-asyncio>=1.5.0",
 ]
 
-# Vercel: deploy this folder as its own project (Root Directory = mcp-servers/formation-ia-agentique)
+# Vercel: deploy this folder as its own project (Root Directory = mcp-servers/formation-langchain)
 [tool.vercel]
 entrypoint = "app:app"
 

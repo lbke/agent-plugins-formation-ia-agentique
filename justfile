@@ -75,13 +75,13 @@ mcp-test:
     for server_dir in mcp-servers/*/; do [ -f "$server_dir/pyproject.toml" ] || continue; echo "== $server_dir"; (cd "$server_dir" && uv run pytest -q) || exit 1; done
 
 # Start an MCP server locally on http://localhost:8000/mcp
-mcp-dev server='formation-ia-agentique':
+mcp-dev server='formation-langchain':
     cd "mcp-servers/{{server}}" && uv run uvicorn app:app --reload --port 8000
 
 # Open the MCP Inspector against the local server (run `just mcp-dev` first).
-mcp-inspect server='formation-ia-agentique':
+mcp-inspect server='formation-langchain':
     npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:8000/mcp
 
 # Deploy an MCP server to its own Vercel project (run `vercel link` once in its folder).
-mcp-deploy server='formation-ia-agentique':
+mcp-deploy server='formation-langchain':
     cd "mcp-servers/{{server}}" && vercel deploy --prod

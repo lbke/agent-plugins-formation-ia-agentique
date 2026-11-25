@@ -2,9 +2,9 @@
 
 Chaque plugin de `plugins/` peut avoir son propre serveur MCP, dans `mcp-servers/<nom-du-plugin>/`. Les serveurs sont écrits en Python avec [FastMCP](https://gofastmcp.com) et déployés sur Vercel, **un projet Vercel par serveur**.
 
-| Serveur | Plugin | Outils |
-| --- | --- | --- |
-| `formation-ia-agentique/` | `plugins/formation-ia-agentique` | `lister-criteres-competences-creation-agent-ia`, `scorer-competences-creation-agent-ia`, `recommander-parcours-ia-agentique` |
+| Serveur | Plugin | URL | Outils |
+| --- | --- | --- | --- |
+| `formation-langchain/` | `plugins/formation-langchain` | https://agent-plugins-formation-langchain-mcp.lbke.fr/mcp | `lister-criteres-competences-creation-agent-ia`, `scorer-competences-creation-agent-ia`, `recommander-parcours-ia-agentique` |
 
 ## Conventions
 
@@ -16,6 +16,8 @@ mcp-servers/<nom-du-plugin>/
 ├── uv.lock
 ├── .python-version    # 3.12 (version par défaut de Vercel)
 ├── .vercelignore
+├── vercel.json        # Content-Type text/plain pour /.well-known/*
+├── public/.well-known/openai-apps-challenge
 ├── app.py             # point d'entrée ASGI : app = mcp.http_app(stateless_http=True, ...)
 ├── server.py          # instance FastMCP : outils, ressources, routes HTTP
 ├── <domaine>.py       # données et logique métier, sans dépendance à MCP
@@ -26,16 +28,16 @@ mcp-servers/<nom-du-plugin>/
 - Tous les outils déclarent leurs annotations (`read_only_hint`, `destructive_hint`, `open_world_hint`), exigées par OpenAI.
 - Les entrées et sorties sont typées avec Pydantic : FastMCP en déduit `inputSchema`, `outputSchema` et `structuredContent`.
 - Mode HTTP sans état (`stateless_http=True`, `json_response=True`) : chaque invocation serverless est indépendante.
-- Le fichier `/.well-known/openai-apps-challenge` est servi par une route FastMCP à partir de la variable d'environnement `OPENAI_APPS_CHALLENGE` (pas de dossier `public/`, donc pas de problème de chemin ou de type de contenu).
+- Le fichier de vérification OpenAI est dans `public/.well-known/openai-apps-challenge` (valeur fournie par l'interface OpenAI, sans extension). Sur Vercel, `public/` est servi à la racine du domaine et `vercel.json` force le type `text/plain` ; une route FastMCP sert le même fichier hors de Vercel (uvicorn local, Docker…).
 - Quand un contenu de skill est repris dans un serveur (par exemple les technologies recommandées), le module Python indique le fichier source à garder synchronisé.
 
 ## Commandes
 
 ```sh
 just mcp-test                              # tests de tous les serveurs
-just mcp-dev formation-ia-agentique        # serveur local sur http://localhost:8000/mcp
-just mcp-inspect formation-ia-agentique    # MCP Inspector sur le serveur local
-just mcp-deploy formation-ia-agentique     # déploiement Vercel en production
+just mcp-dev formation-langchain            # serveur local sur http://localhost:8000/mcp
+just mcp-inspect formation-langchain        # MCP Inspector sur le serveur local
+just mcp-deploy formation-langchain         # déploiement Vercel en production
 ```
 
 ## Déployer sur Vercel
@@ -43,13 +45,13 @@ just mcp-deploy formation-ia-agentique     # déploiement Vercel en production
 Pour chaque serveur, créez un projet Vercel dont le **Root Directory** est `mcp-servers/<nom-du-plugin>` (interface Vercel, ou `vercel link` lancé depuis ce dossier). Vercel détecte `app.py` et la variable `app` ([runtime Python](https://vercel.com/docs/functions/runtimes/python)).
 
 1. `cd mcp-servers/<nom-du-plugin> && vercel link` (une seule fois).
-2. Ajoutez la variable d'environnement `OPENAI_APPS_CHALLENGE` si le plugin est soumis à OpenAI.
-3. `just mcp-deploy <nom-du-plugin>`, puis associez un domaine (par exemple `mcp-<nom-du-plugin>.lbke.fr`).
+2. Si le plugin est soumis à OpenAI, placez la valeur fournie par OpenAI dans `public/.well-known/openai-apps-challenge`.
+3. `just mcp-deploy <nom-du-plugin>`, puis associez un domaine selon la convention `agent-plugins-<nom-du-plugin>-mcp.lbke.fr`.
 4. Mettez à jour l'URL dans `plugins/<nom-du-plugin>/mcp.json` (`https://<domaine>/mcp`).
 
 ## Ajouter un serveur
 
-1. Copiez `formation-ia-agentique/` vers `mcp-servers/<nom-du-plugin>/`, supprimez `.venv/`, renommez le projet dans `pyproject.toml` et le nom du serveur dans `server.py`.
+1. Copiez `formation-langchain/` vers `mcp-servers/<nom-du-plugin>/`, supprimez `.venv/`, renommez le projet dans `pyproject.toml` et le nom du serveur dans `server.py`.
 2. Remplacez les modules métier et les outils, puis les tests.
 3. Mettez à jour `plugins/<nom-du-plugin>/mcp.json`, les cas de test de `plugin.json` et le tableau ci-dessus.
 
