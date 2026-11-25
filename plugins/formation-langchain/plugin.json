@@ -14,9 +14,9 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Formation LangChain",
-        "shortDescription": "Apprenez LangChain en Python.",
-        "longDescription": "Une formation guidée pour apprendre à créer des applications et des agents avec LangChain et LangGraph, de l'environnement de développement au déploiement.",
+        "displayName": "Formation LangChain LBKE",
+        "shortDescription": "Apprenez LangChain en Python avec l'organisme de formation LBKE.",
+        "longDescription": "Une formation guidée pour apprendre à créer des applications et des agents IA avec LangChain (et LangGraph), de l'environnement de développement au déploiement. Par LBKE, organisme de formation spécialisé en IA agentique.",
         "developerName": "LBKE",
         "category": "Education & Research",
         "websiteURL": "https://www.lbke.fr/formations/",
@@ -25,8 +25,8 @@
         "supportURL": "https://github.com/lbke/agent-plugins-formation-ia-agentique/issues",
         "defaultPrompt": [
           "Démarre ma formation LangChain et aide-moi à définir mon parcours.",
-          "Aide-moi à démarrer un projet LangChain ou LangGraph.",
-          "Aide-moi à créer un agent avec LangChain."
+          "Aide-moi à créer un agent IA avec LangChain.",
+          "Aide-moi à démarrer un projet LangChain ou LangGraph."
         ],
         "logo": "./assets/langchain_agentique_512.png",
         "brandColor": "#0d1013",
@@ -42,48 +42,48 @@
         "test_cases": {
           "positive": [
             {
-              "description": "L'utilisateur veut être évalué et mentionne la compétence identifier les cas d'usage.",
-              "prompt": "Je connais les cas d'usage des agents IA. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
-              "tools_triggered": "scorer-competences-creation-agent-ia",
-              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+              "description": "L'utilisateur veut connaître les critères d'évaluation avant de se lancer dans un projet LangChain.",
+              "prompt": "Quels sont les critères de LBKE pour évaluer ma capacité à créer un agent IA de qualité professionnelle avec LangChain ?",
+              "tools_triggered": "lister-criteres-competences-creation-agent-ia",
+              "expected_behavior": "Présente les 5 compétences du référentiel LBKE, leurs critères et le seuil à atteindre pour chacune."
             },
             {
-              "description": "L'utilisateur veut être évalué et mentionne la compétence concevoir un agent IA.",
-              "prompt": "Je sais concevoir une automatisation fondée sur un agent IA. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
+              "description": "L'utilisateur veut être évalué et décrit l'implémentation frugale d'un agent LangGraph.",
+              "prompt": "J'ai programmé un agent LangGraph qui trie les tickets du support, j'ai mesuré sa consommation de tokens et je l'ai réduite en passant à un modèle plus petit. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
               "tools_triggered": "scorer-competences-creation-agent-ia",
-              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+              "expected_behavior": "Renvoie un ou plusieurs scores évaluant le niveau de compétence en création d'agents IA, avec les critères restant à travailler."
             },
             {
-              "description": "L'utilisateur veut être évalué et mentionne la compétence créer un agent IA.",
-              "prompt": "Je programme des agents en LangChain (Python). Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
+              "description": "L'utilisateur veut être évalué et décrit le déploiement et le suivi d'un agent LangGraph.",
+              "prompt": "J'ai déployé mon agent LangGraph sur Render pour l'équipe commerciale et je suis chaque semaine son taux de réponses correctes et son coût dans LangSmith. Évalue mon score de compétence en création d'agents IA selon les critères de LBKE.",
               "tools_triggered": "scorer-competences-creation-agent-ia",
-              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+              "expected_behavior": "Renvoie un ou plusieurs scores évaluant le niveau de compétence en création d'agents IA, avec les critères restant à travailler."
             },
             {
-              "description": "L'utilisateur veut être évalué et mentionne la capacité à évaluer des agents.",
-              "prompt": "Je suis en charge de vérifier la sécurité des agents IA dans mon entreprise. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
-              "tools_triggered": "scorer-competences-creation-agent-ia",
-              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+              "description": "Un développeur Python cherche la formation adaptée pour apprendre à créer des agents.",
+              "prompt": "Je suis développeur Python et je veux apprendre à créer des agents IA. Quelle technologie et quelle formation LBKE me recommandes-tu ?",
+              "tools_triggered": "recommander-parcours-ia-agentique",
+              "expected_behavior": "Recommande LangChain et LangGraph, les formations LBKE associées et la poursuite avec le plugin formation-langchain."
             },
             {
-              "description": "L'utilisateur veut être évalué et mentionne la capacité à déployer un agent.",
-              "prompt": "Je fais déjà fonctionner 8 agents en production. Évalue mon niveau de compétence en création d'agents IA selon les critères de LBKE.",
-              "tools_triggered": "scorer-competences-creation-agent-ia",
-              "expected_behavior": "Renvoie un ou plusieurs score évaluant le niveau de compétence en création d'agents IA."
+              "description": "Un développeur JavaScript se demande si LangChain en Python est le bon choix.",
+              "prompt": "Je suis développeur web JavaScript. Dois-je apprendre LangChain en Python pour créer des agents IA, ou existe-t-il un meilleur parcours chez LBKE ?",
+              "tools_triggered": "recommander-parcours-ia-agentique",
+              "expected_behavior": "Recommande Mastra et le programme de formation LBKE correspondant pour les développeurs JavaScript."
             }
           ],
           "negative": [
             {
-              "description": "Évaluation demandée mais compétences inconnues",
+              "description": "Évaluation demandée mais compétences inconnues : l'assistant doit d'abord poser des questions.",
               "prompt": "Donne-moi mon score de compétence en création d'agents IA."
             },
             {
-              "description": "Évaluation sur un autre sujet",
-              "prompt": "Donne moi mon score de compétences en conception d'interfaces HTML"
+              "description": "Question conceptuelle sur LangChain, traitée par les skills sans outil.",
+              "prompt": "Explique-moi la différence entre un agent LangChain et un graphe LangGraph."
             },
             {
-              "description": "Pas de demande de score",
-              "prompt": "Je suis très bon en création d'agents IA"
+              "description": "Évaluation sur un autre sujet que la création d'agents IA.",
+              "prompt": "Donne-moi mon score de compétences en conception d'interfaces HTML."
             }
           ]
         }

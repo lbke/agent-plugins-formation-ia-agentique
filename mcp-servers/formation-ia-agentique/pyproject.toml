@@ -1,0 +1,23 @@
+[project]
+name = "mcp-formation-ia-agentique"
+version = "0.1.0"
+description = "Serveur MCP du plugin formation-ia-agentique (LBKE)"
+requires-python = ">=3.12"
+dependencies = [
+    "fastmcp>=4.2.6",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-asyncio>=1.5.0",
+]
+
+# Vercel: deploy this folder as its own project (Root Directory = mcp-servers/formation-ia-agentique)
+[tool.vercel]
+entrypoint = "app:app"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["."]
