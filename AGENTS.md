@@ -65,7 +65,7 @@ For an MCP server: the MCP servers now live in `mcp-servers/` (FastMCP). Each se
 
 NOTE: some build system may alter the final path and add a prefix, this will mess up the `.well-known` discovery. See this issue regarding to how Skybridge handles the public folder: https://github.com/alpic-ai/skybridge/issues/1142
 
-To record the demo video: loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video. 
+To record the demo video (an automated approach is described in the internal skill `.agents/skills/enregistrer-video-chatgpt`): loads the plugin in ChatGPT interface, desktop app is needed for a plugin with MCP : https://chatgpt.com/plugins. Run each positive test case in the video. 
 We hosted a quick demo in the MCP server directly using [Skybridge /public folder](https://docs.skybridge.tech/guides/assets-and-styling) (final URL will be `/assets/<file-path>). 
 But using any kind of static file host should work (domain doesn't have to be the official company domain).
 

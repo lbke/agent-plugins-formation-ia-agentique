@@ -49,6 +49,8 @@ Pour chaque serveur, créez un projet Vercel dont le **Root Directory** est `mcp
 3. `just mcp-deploy <nom-du-plugin>`, puis associez un domaine selon la convention `agent-plugins-<nom-du-plugin>-mcp.lbke.fr`.
 4. Mettez à jour l'URL dans `plugins/<nom-du-plugin>/mcp.json` (`https://<domaine>/mcp`).
 
+Si Vercel affiche « No python entrypoint found in default locations » et propose `entrypoint = "mcp-servers.<nom-du-plugin>.app:app"`, c'est que le projet est construit depuis la racine du dépôt. **N'ajoutez pas cette ligne** : le tiret rend ce chemin de module invalide et `app.py` importe `server` depuis son propre dossier. Réglez plutôt **Settings → Build and Deployment → Root Directory** sur `mcp-servers/<nom-du-plugin>`.
+
 ## Ajouter un serveur
 
 1. Copiez `formation-langchain/` vers `mcp-servers/<nom-du-plugin>/`, supprimez `.venv/`, renommez le projet dans `pyproject.toml` et le nom du serveur dans `server.py`.

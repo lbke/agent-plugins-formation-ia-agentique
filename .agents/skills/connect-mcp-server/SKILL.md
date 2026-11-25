@@ -27,7 +27,7 @@ Tool names in `server.py` must match the `tools_triggered` values of the review 
 
 Must contain review + demo_url (`review.demo_recording_url`).
 
-The demo video can be hosted on any public static host, for instance a [Cloudflare R2 public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/). See the OpenAI section of `AGENTS.md` for how to record it.
+The demo video can be hosted on any public static host, for instance a [Cloudflare R2 public bucket](https://developers.cloudflare.com/r2/buckets/public-buckets/). See the OpenAI section of `AGENTS.md` and the internal skill `enregistrer-video-chatgpt` for how to record it.
 
 https://developers.openai.com/plugins/deploy/submission?utm_source=chatgpt.com#configure-onboarding-review-and-publication
 
