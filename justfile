@@ -11,6 +11,11 @@ split-slides slidev_file:
     python3 scripts/split_slides.py {{slidev_file}}
 
 
+# Detect cross-references between skills and draw one PNG graph per plugin (requires Graphviz).
+# Also warns about unknown skills, skills from another plugin and names written without backticks.
+skills-graph output_dir='dist':
+    python3 scripts/skills_graph.py --plugin-path "plugins" --output-dir "{{output_dir}}"
+
 # *** CLAUDE
 
 # Validate the plugin manifest and components with Claude Code.
@@ -62,3 +67,21 @@ bump-version bump='patch':
     new_version=$(python3 scripts/bump_version.py --plugin-path "plugins" --part "{{bump}}" ); git add -A ; git commit -am "Bump version to $new_version" ; git tag -a "v$new_version" -m "Release v$new_version"; git push --tags;
 
 
+
+# *** MCP SERVERS (one FastMCP project per plugin in mcp-servers/, see mcp-servers/README.md)
+
+# Run the tests of every MCP server.
+mcp-test:
+    for server_dir in mcp-servers/*/; do [ -f "$server_dir/pyproject.toml" ] || continue; echo "== $server_dir"; (cd "$server_dir" && uv run pytest -q) || exit 1; done
+
+# Start an MCP server locally on http://localhost:8000/mcp
+mcp-dev server='formation-ia-agentique':
+    cd "mcp-servers/{{server}}" && uv run uvicorn app:app --reload --port 8000
+
+# Open the MCP Inspector against the local server (run `just mcp-dev` first).
+mcp-inspect server='formation-ia-agentique':
+    npx @modelcontextprotocol/inspector --transport http --server-url http://localhost:8000/mcp
+
+# Deploy an MCP server to its own Vercel project (run `vercel link` once in its folder).
+mcp-deploy server='formation-ia-agentique':
+    cd "mcp-servers/{{server}}" && vercel deploy --prod

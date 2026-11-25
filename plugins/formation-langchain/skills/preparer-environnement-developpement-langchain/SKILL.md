@@ -1,6 +1,6 @@
 ---
 name: preparer-environnement-developpement-langchain
-description: Installer et configurer un environnement de développement fonctionnel pour un projet LangChain ou LangGraph, outil par outil (Python, pip, uv, environnement virtuel, Git, éditeur), en s'appuyant sur le diagnostic de la skill tester-environnement-python.
+description: Installer et configurer un environnement de développement fonctionnel pour un projet LangChain ou LangGraph, outil par outil (Python, pip, uv, environnement virtuel, Git, éditeur), en s'appuyant sur le diagnostic de la skill `tester-environnement-python`.
 ---
 
 # Préparer l'environnement de développement LangChain

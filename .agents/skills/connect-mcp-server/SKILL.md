@@ -5,19 +5,23 @@ description: "Connect an MCP server to a plugin"
 
 ## Find and deploy the MCP server
 
-**The MCP server lives in a separate project**, this skills only indicates the architecture, so you may need to require the developer's assistance to actually run the commands and keep in sync the MCP server tools and the `plugin.json` files.
+**The MCP servers live in `mcp-servers/<plugin-name>/`**, one self-contained FastMCP (Python) project per plugin. Read `mcp-servers/README.md` for the architecture and conventions.
 
-Currently this project reuses the same MCP server for all plugins: https://github.com/lbke/agent-plugins-mcp-server
-
-Alpic is the official platform behind the Skybridge MCP framework it uses, but domain configuration is not free.
-
-So instead we use Vercel:
-https://docs.skybridge.tech/ship/deploy#vercel
+Each server is deployed as its own Vercel project (Root Directory = `mcp-servers/<plugin-name>`):
 
 ```sh
-pnpm run build
-pnpx vercel deploy --prebuilt
+just mcp-test
+just mcp-dev <plugin-name>      # http://localhost:8000/mcp
+just mcp-deploy <plugin-name>   # requires `vercel link` once in the server folder
 ```
+
+Deploying and linking Vercel projects needs the developer's account: ask them to run these commands if needed.
+
+Legacy: the plugins first used a shared Skybridge (TypeScript) server, https://github.com/lbke/agent-plugins-mcp-server, deployed at `https://agent-plugins-mcp-server.lbke.fr/mcp`. Point `mcp.json` to the new server only once it is deployed.
+
+## Keep tools and plugin.json in sync
+
+Tool names in `server.py` must match the `tools_triggered` values of the review test cases in `plugins/<plugin-name>/plugin.json`.
 
 ## Plugin.json in this repo
 
@@ -35,3 +39,5 @@ https://agent-plugins.org/plugin-authors/mcp-servers
 ## MCP requirements for OpenAI
 
 https://developers.openai.com/plugins/plugin-guidelines#mcp-requirements
+
+The domain verification file `/.well-known/openai-apps-challenge` is served by each FastMCP server from the `OPENAI_APPS_CHALLENGE` environment variable of its Vercel project.

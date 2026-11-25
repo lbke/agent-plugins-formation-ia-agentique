@@ -74,13 +74,13 @@ Le plugin ne contient aucun connecteur, n'envoie aucune donnée à un service ex
 
 ## Commandes
 
-Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin LangChain dans Claude Code, `just zip-plugin formation-langchain` ou `just zip-plugin formation-ia-agentique` pour générer une archive ZIP installable, ou `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées. Le workflow de release génère les archives des deux plugins.
+Installez [just](https://github.com/casey/just), puis lancez `just` pour afficher les commandes courantes. Utilisez `just validate-claude` pour vérifier la marketplace et ses plugins Claude, `just launch-claude` pour charger le plugin LangChain dans Claude Code, `just zip-plugin formation-langchain` ou `just zip-plugin formation-ia-agentique` pour générer une archive ZIP installable, `just split-slides data/langchain-recap-5mn.md` pour extraire les diapositives numérotées, ou `just skills-graph` pour générer dans `dist/` un graphe des références entre skills par plugin (nécessite Graphviz) (et signaler les noms de skills inconnus ou écrits sans backticks). Le workflow de release génère les archives des deux plugins.
 
 ## Contributions
 
 Dépôt GitHub : https://github.com/lbke/agent-plugins-formation-ia-agentique
 
-Voir la skill "poser-une-question-a-un-formateur-ia" pour transmettre une question ou suggestion d'amélioration aux formateurs IA agentique de LBKE, via un ticket GitHub.
+Voir la skill `poser-une-question-a-un-formateur-ia` pour transmettre une question ou suggestion d'amélioration aux formateurs IA agentique de LBKE, via un ticket GitHub.
 
 Ce dépôt constitue aussi un exemple de base de code pour développer des plugins IA multi-plateformes.
 

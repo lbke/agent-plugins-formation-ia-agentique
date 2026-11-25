@@ -45,7 +45,7 @@ Identifie rapidement :
 
 ### Il cherche une formation ou un accompagnement
 
-- Utilise `rechercher-formation-ia-agentique` s'il cherche une formation ou une ressource proposée par LBKE.
+- S'il cherche une formation ou une ressource proposée par LBKE, oriente-le vers les pages listées dans `references/liens.md`.
 - Utilise `poser-une-question-a-un-formateur-langchain` pour transmettre une question ou une suggestion aux formateurs.
 
 ## Proposer un parcours simple

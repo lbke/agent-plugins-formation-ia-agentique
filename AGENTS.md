@@ -27,6 +27,7 @@ This repository is a bundle of Claude and Agent Plugin packages, not a tradition
 - `.agents/skills/`: internal skills that guide development agents. They are not part of a plugin and are not published.
 - `data/`: source material and presentations used to produce and organize the training content.
 - `scripts/`: small helper scripts directly related to the content.
+- `mcp-servers/<plugin-name>/`: one self-contained FastMCP (Python) server per plugin, each deployed as its own Vercel project. See `mcp-servers/README.md`.
 
 Do not confuse internal skills with published ones: a skill for creating skills or maintenance instructions is internal and belongs in `.agents/skills/`. A learning skill intended for learners belongs in `plugins/<plugin-name>/skills/` and will be included in the plugin.
 
@@ -60,7 +61,7 @@ As of 2026/10, OpenAI doesn't accept skills-only plugins anymore.
 
 "Use only letters, numbers, underscores, or hyphens, starting with a letter or number.": this is in regards to the plugin name, it can't be "fr.lbke.plugin-name" for OpenAI (though Agent Plugins standard accepts it) as dots are forbidden.
 
-For an MCP server: the MCP server (so not this repo but the MCP codebase) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
+For an MCP server: the MCP servers now live in `mcp-servers/` (FastMCP). They serve `/.well-known/openai-apps-challenge` from the `OPENAI_APPS_CHALLENGE` env var. The legacy Skybridge server (separate repository) should have a `public/.well-known/openai-apps-challenge` file (text file but without any extension) with a value provided in OpenAI interface.
 
 NOTE: some build system may alter the final path and add a prefix, this will mess up the `.well-known` discovery. See this issue regarding to how Skybridge handles the public folder: https://github.com/alpic-ai/skybridge/issues/1142
 

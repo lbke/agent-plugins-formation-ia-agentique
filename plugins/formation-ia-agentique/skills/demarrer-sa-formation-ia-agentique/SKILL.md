@@ -33,7 +33,7 @@ Commence par demander ce qu'il souhaite comprendre et donne une explication adap
 
 ### Si l'utilisateur souhaite apprendre LangChain ou LangGraph
 
-Oriente-le vers le plugin `formation-langchain` et son skill `demarrer-formation-langchain`, qui proposent un parcours technique dédié.
+Oriente-le vers le plugin `formation-langchain`, qui propose un parcours technique dédié.
 
 ### Si l'utilisateur souhaite réaliser un projet concret
 
